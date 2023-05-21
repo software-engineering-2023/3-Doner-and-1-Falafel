@@ -1,0 +1,67 @@
+
+.firstline li {
+    margin-right: 20px;
+}
+
+nav {
+    top: 0;
+    flex-grow: 1;
+    height: min-content;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-grow: 1;
+    background-color: #006400;
+}
+
+nav a:hover {
+    background-color: #ded4d4;
+}
+
+nav .firstline { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+
+.head {
+    background-color: #f3eaaf;
+    color: #f3eaaf;
+    padding: 0px;
+    text-align: left;
+    display: flex;
+}
+
+.head img {
+    height: 210px;
+    width: auto;
+    top:0;
+    left:0;
+}
+.body {
+    color: #fff;
+    background-image: url("smiling.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px; 
+      
+}
+
+  
+.body img{
+    width : max-width;
+}
+ 
