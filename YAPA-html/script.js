@@ -4,9 +4,13 @@ function login() {
   
     if (username === 'user' && password === 'user') {
       // Redirect to another page
-      window.location.href = 'index.html';
+      window.location.href = 'user.html';
     } else {
       // Display error message
       alert('Invalid username or password');
     }
+  };
+
+  function buttonClicked() {
+    window
   };
