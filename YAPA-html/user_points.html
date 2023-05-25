@@ -3,6 +3,18 @@
 
 <head>
   <!-- Basic -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .button {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #eaeaea;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
@@ -31,6 +43,7 @@
 </head>
 
 <body>
+
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -49,19 +62,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
-                <li class="nav-item ">
-                  <a class="nav-link" href="user.html">Home</a>
+                <li class="nav-item active ">
+                  <a class="nav-link" href="user.html">Home </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="user_account.html">My Account</a>
-                </li>
+                    <a class="nav-link" href="user_account.html">My Account</a>
+                  </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> Notifications </a>
+                    <a class="nav-link" href="user_notifications.html"> Notifications </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="user_points.html">Points<img src="images/wallet.png" alt="" />
-                    </a>
-                  </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="user_points.html">Points<img src="images/wallet.png" alt="" /><span class="sr-only">(current)</span>
+                  </a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="login.html"> Logout </a>
                 </li>
@@ -72,113 +85,143 @@
         </nav>
       </div>
     </header>
-    
-    <!-- end header section -->
-
   </div>
-  <title>Transactions</title>
+<head>
+  <title>Points Page</title>
   <style>
+    #points {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #money {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    #redeem-button {
+      background-color: #30ae69;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    #table-buttons {
+      margin-bottom: 20px;
+    }
+
+    .table-button {
+      background-color: #30ae69;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
     table {
       border-collapse: collapse;
       width: 100%;
-      background-color: white;
     }
-    
+
     th, td {
-      border: 1px solid black;
       padding: 8px;
       text-align: left;
+      border-bottom: 1px solid #ddd;
     }
-    
-    body{
-        background-color: #ffffff;
+
+    th {
+      background-color: #f2f2f2;
     }
-    .cool-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.cool-table th,
-.cool-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.cool-table th {
-  background-color: #30ae69;
-  color: #fff;
-  font-weight: bold;
-}
-
-.cool-table tr:hover {
-  background-color: #f2f2f2;
-}
-
-.cool-table tr:nth-child(even) {
-  background-color: #f7f7f7;
-}
-
-.cool-table td:last-child {
-  text-transform: capitalize;
-}
-
-.cool-table .report-status {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 20px;
-  font-size: 12px;
-  text-align: center;
-}
-
-.cool-table .report-status-handled {
-  background-color: #30ae69;
-  color: #fff;
-}
-
-.cool-table .report-status-unhandled {
-  background-color: #f76262;
-  color: #fff;
-}
-    
   </style>
 </head>
 <body>
-  <div class="heading_container">
-    <h2 style="color:rgb(0, 0, 0)">
-      Transactions History
-    </h2>
+  <h1>Points Page</h1>
+
+  <div id="points">Your points: <span id="points-amount">100</span></div>
+  <div id="money">Equivalent money: $<span id="money-amount">10</span></div>
+
+  <button id="redeem-button" onclick="redeemPoints()">Redeem Points</button>
+
+  <div id="table-buttons">
+    <button class="table-button" onclick="viewRedeemedPoints()">Redeemed Points</button>
+    <button class="table-button" onclick="viewExpiredPoints()">Expired Points</button>
   </div>
-</div>
-  <table class="cool-table">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Transaction</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>01-04-2023</td>
-        <td>Deposit</td>
-        <td>$100.00</td>
-      </tr>
-      <tr>
-        <td>22-02-2023</td>
-        <td>Withdrawal</td>
-        <td>$50.00</td>
-      </tr>
-      <tr>
-        <td>19-01-2023 </td>
-        <td>Payment</td>
-        <td>$30.00</td>
-      </tr>
-    </tbody>
-  </table>
- 
+
+  <div id="redeemed-points-table" style="display: none;">
+    <h2>Redeemed Points</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody id="redeemed-points-body">
+        <!-- Redeemed points will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="expired-points-table" style="display: none;">
+    <h2>Expired Points</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>April 15, 2023</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>June 10, 2023</td>
+          <td>10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function redeemPoints() {
+      var pointsAmount = document.getElementById('points-amount').innerText;
+      var redeemedPointsTableBody = document.getElementById('redeemed-points-body');
+
+      if (parseInt(pointsAmount) > 0) {
+        // Add the redeemed points to the table
+        var currentDate = new Date().toLocaleDateString();
+        var redeemedPointsRow = document.createElement('tr');
+        redeemedPointsRow.innerHTML = '<td>' + currentDate + '</td><td>' + pointsAmount + '</td>';
+        redeemedPointsTableBody.appendChild(redeemedPointsRow);
+
+        // Reset the points to zero
+        document.getElementById('points-amount').innerText = '0';
+
+        // Perform further actions for redeeming points
+        alert('Congratulations! You have redeemed ' + pointsAmount + ' points.');
+      } else {
+        alert('You do not have any points to redeem.');
+      }
+    }
+
+    function viewRedeemedPoints() {
+      document.getElementById('redeemed-points-table').style.display = 'block';
+      document.getElementById('expired-points-table').style.display = 'none';
+    }
+
+    function viewExpiredPoints() {
+      document.getElementById('redeemed-points-table').style.display = 'none';
+      document.getElementById('expired-points-table').style.display = 'block';
+    }
+  </script>
+</body>
  <!-- end how section -->
 
  <section class="info_section layout_padding">
@@ -291,3 +334,5 @@
 </body>
 
 </html>
+
+
