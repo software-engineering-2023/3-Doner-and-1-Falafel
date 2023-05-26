@@ -34,7 +34,7 @@
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
   <!-- Custom styles for this template -->
@@ -267,6 +267,134 @@
   <!-- end info_section -->
 
   <!-- footer section -->
+      
+  <div id="slideOutButton" class="slide-out-button" onclick="openReportPopup()">
+    <i class="fas fa-exclamation-circle">Technical Issue</i>
+    <span></span>
+</div>
+<!-- Pop-up box -->
+<div id="popupBoxReport" class="popup">
+    <span class="close-button" onclick="closeReportPopup()">&times;</span>
+    <p class="popup-text">What is your issue?</p>
+    <input type="text" id="textInput">
+    <br>
+    <button class="transparent-button" id="submitButton" onclick="closeReportPopup()">Submit</button>
+</div>
+<script>
+    var popupBoxReport = document.getElementById("popupBoxReport");
+
+    var submitButton = document.getElementById("submitButton");
+
+    function openReportPopup() {
+        popupBoxReport.style.display = "block";
+    }
+
+    function closeReportPopup() {
+        var text = document.getElementById("textInput").value;
+        if (text != "") {
+            alert("Thank you! Your Issue was Reported Succesfully.");
+            document.getElementById("textInput").value = "";
+        }
+        // Hide the pop-up box
+        popupBoxReport.style.display = "none";
+    }
+</script>
+
+<style>
+  /* Style for the pop-up box */
+.popup {
+display: none;
+position: fixed;
+bottom: 40px;
+right: 40px;
+width: 400px;
+background-color: #f1f1f1;
+padding: 25px;
+border-radius: 10px;
+text-align: center;
+}
+
+.popup-text {
+padding: 10px;
+font-weight: bold;
+color: #404b65;
+}
+/* Style for the button */
+.slide-out-button {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background-color: #30ae69;
+padding: 20px;
+border-radius: 5px;
+transition: all 0.3s ease;
+cursor: pointer;
+}
+
+/* Style for the button icon */
+.slide-out-button i {
+color: rgb(255, 255, 255);
+}
+/* Style for the button on hover */
+.slide-out-button:hover {
+background-color: #30ae69;
+}
+/* Style for the onmouseover text */
+.slide-out-button:hover span {
+  color: #1f1f1f;
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
+}
+/* Style for the onmouseover text */
+.slide-out-button span {
+display: none;
+}
+/* Style for the onmouseover text on hover */
+.slide-out-button:hover span {
+display: inline-block;
+}
+
+/* Style for the transparent submit button */
+.transparent-button {
+background-color: transparent;
+color: #404b65;
+border: none;
+padding: 10px;
+border-radius: 5px;
+transition: background-color 0.3s ease;
+cursor: pointer;
+font-weight: normal;
+}
+
+/* Style for the submit button on hover */
+.transparent-button:hover {
+background-color: #30ae69;
+color: #fff;
+}
+
+.popup input[type="text"] {
+width: 100%;
+padding: 8px;
+background-color: #fbfbfb;
+margin-bottom: 10px;
+box-sizing: border-box;
+}
+/* Style for the close button */
+.close-button {
+position: absolute;
+top: 7px;
+right: 10px;
+font-size: 20px;
+color: #666666;
+cursor: pointer;
+}
+/* Style for the close button on hover */
+.close-button:hover {
+color: #1f1f1f;
+}
+</style>
+
+
   <section class="container-fluid footer_section">
     <p>
       &copy; 2023 All Rights Reserved By

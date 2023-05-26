@@ -104,20 +104,22 @@
     function submitForm(event) {
       event.preventDefault(); // Prevent the form from submitting and page refreshing
   
-      // Get the values entered by the user
-      var name = document.getElementById('name').value;
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
+      // Get the form element that triggered the submit event
+      var form = event.target.form;
   
-      // Perform any necessary validation here
+      // Check if the form is valid
+      if (form.checkValidity()) {
+        // Show the alert message
+        alert('You have created your account successfully!');
   
-      // Show the alert message
-      alert('Sign up successful!');
-  
-      // Redirect to the login page
-      window.location.href = 'login.html';
+        // Redirect to the user page
+        window.location.href = 'login.html';
+      } else {
+        // Form is not valid, display an error message or handle validation errors
+        alert('Please fill in all required fields.');
+      }
     }
-  </script>
+    </script>
   
 
   <!-- footer section -->
