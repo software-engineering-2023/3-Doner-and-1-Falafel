@@ -21,7 +21,7 @@
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
   <!-- Custom styles for this template -->
@@ -130,70 +130,64 @@
     }
 </style>
 <div class="heading_container">
-  <h2 style="color:rgb(0, 0, 0)">
-    Credit Card Application
-  </h2>
-</div>
+    <h2 style="color:rgb(0, 0, 0)">
+      Loan Application
+    </h2>
+  </div>
 </div>
 <div class="container">
-  <div class="box">
-    <div class="row">
-      <div class="detail-box">
-        <form action="user_cards.html" method="post">
-          <label for="gender">Gender:</label>
-          <select id="gender" name="gender" required>
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select><br><br>
-
-          <label for="name">Card Holder Name:</label>
-          <input type="text" id="name" name="name" required><br><br>
-
-          <label for="creditCardType">Credit Card Type:</label>
-          <select id="creditCardType" name="creditCardType" required>
-            <option value="">Select Card Type</option>
-            <option value="visa">Visa</option>
-            <option value="mastercard">Mastercard</option>
-            <option value="amex">American Express</option>
-          </select><br><br>
-
-          <label for="accountNumber">Account Number:</label>
-          <input type="text" id="accountNumber" name="accountNumber" required><br><br>
-
-          <label for="occupation">Occupation:</label>
-          <input type="text" id="occupation" name="occupation" required><br><br>
-
-          <label for="phone">Phone Number:</label>
-          <input type="number" id="phone" name="phone" required><br><br>
-
-          <input type="submit" value="Submit" onclick="submitRequest()">
-        </form>
+    <div class="box">
+      <div class="row">
+        <div class="detail-box">
+          <form action="user_loans.html" method="post" onsubmit="return validateLoanRequest(event)">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select><br><br>
+  
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required><br><br>
+  
+            <label for="loantype">Loan Type:</label>
+            <select id="loantype" name="loantype" required>
+              <option value="">Select Loan Type</option>
+              <option value="personal">Personal Loan</option>
+              <option value="home">Home Loan</option>
+              <option value="auto">Auto Loan</option>
+              <option value="other">Other</option>
+            </select><br><br>
+  
+            <label for="loanamount">Loan Amount:</label>
+            <input type="number" id="loanamount" name="loanamount" required><br><br>
+  
+            <label for="loanperiod">Loan Period (in months):</label>
+            <input type="number" id="loanperiod" name="loanperiod" required><br><br>
+  
+            <input type="submit" value="Submit">
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<script>
-  function submitRequest() {
-  var gender = document.getElementById("gender").value;
-  var name = document.getElementById("name").value;
-  var creditCardType = document.getElementById("creditCardType").value;
-  var accountNumber = document.getElementById("accountNumber").value;
-  var occupation = document.getElementById("occupation").value;
-  var phone = document.getElementById("phone").value;
-
-  if (gender === "" || name === "" || creditCardType === "" || accountNumber === "" || occupation === "" || phone === "") {
-    alert("Please fill in all the required fields.");
-    return false; // Prevent form submission
-  }
-
-  // Perform necessary actions for accepting the credit card request
-  alert("Credit Card Requested Successfully!");
-  // window.location.href = 'user_cards.html';
-}
-
-</script>
+  
+  <script>
+    function validateLoanRequest(event) {
+      var inputs = document.getElementsByTagName("input");
+  
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute("required") && inputs[i].value === "") {
+          alert("Please fill in all the required fields.");
+          event.preventDefault(); // Prevent form submission
+          return false;
+        }
+      }
+  
+      return true; // Allow form submission
+    }
+  </script>
+  
 
 
   <section class="info_section layout_padding">
@@ -268,134 +262,6 @@
 
   <!-- end info_section -->
   <!-- footer section -->
-      
-  <div id="slideOutButton" class="slide-out-button" onclick="openReportPopup()">
-    <i class="fas fa-exclamation-circle">Technical Issue</i>
-    <span></span>
-</div>
-<!-- Pop-up box -->
-<div id="popupBoxReport" class="popup">
-    <span class="close-button" onclick="closeReportPopup()">&times;</span>
-    <p class="popup-text">What is your issue?</p>
-    <input type="text" id="textInput">
-    <br>
-    <button class="transparent-button" id="submitButton" onclick="closeReportPopup()">Submit</button>
-</div>
-<script>
-    var popupBoxReport = document.getElementById("popupBoxReport");
-
-    var submitButton = document.getElementById("submitButton");
-
-    function openReportPopup() {
-        popupBoxReport.style.display = "block";
-    }
-
-    function closeReportPopup() {
-        var text = document.getElementById("textInput").value;
-        if (text != "") {
-            alert("Thank you! Your Issue was Reported Succesfully.");
-            document.getElementById("textInput").value = "";
-        }
-        // Hide the pop-up box
-        popupBoxReport.style.display = "none";
-    }
-</script>
-
-<style>
-  /* Style for the pop-up box */
-.popup {
-display: none;
-position: fixed;
-bottom: 40px;
-right: 40px;
-width: 400px;
-background-color: #f1f1f1;
-padding: 25px;
-border-radius: 10px;
-text-align: center;
-}
-
-.popup-text {
-padding: 10px;
-font-weight: bold;
-color: #404b65;
-}
-/* Style for the button */
-.slide-out-button {
-position: fixed;
-bottom: 20px;
-right: 20px;
-background-color: #30ae69;
-padding: 20px;
-border-radius: 5px;
-transition: all 0.3s ease;
-cursor: pointer;
-}
-
-/* Style for the button icon */
-.slide-out-button i {
-color: rgb(255, 255, 255);
-}
-/* Style for the button on hover */
-.slide-out-button:hover {
-background-color: #30ae69;
-}
-/* Style for the onmouseover text */
-.slide-out-button:hover span {
-  color: #1f1f1f;
-  font-family: 'Poppins', sans-serif;
-  font-weight: normal;
-}
-/* Style for the onmouseover text */
-.slide-out-button span {
-display: none;
-}
-/* Style for the onmouseover text on hover */
-.slide-out-button:hover span {
-display: inline-block;
-}
-
-/* Style for the transparent submit button */
-.transparent-button {
-background-color: transparent;
-color: #404b65;
-border: none;
-padding: 10px;
-border-radius: 5px;
-transition: background-color 0.3s ease;
-cursor: pointer;
-font-weight: normal;
-}
-
-/* Style for the submit button on hover */
-.transparent-button:hover {
-background-color: #30ae69;
-color: #fff;
-}
-
-.popup input[type="text"] {
-width: 100%;
-padding: 8px;
-background-color: #fbfbfb;
-margin-bottom: 10px;
-box-sizing: border-box;
-}
-/* Style for the close button */
-.close-button {
-position: absolute;
-top: 7px;
-right: 10px;
-font-size: 20px;
-color: #666666;
-cursor: pointer;
-}
-/* Style for the close button on hover */
-.close-button:hover {
-color: #1f1f1f;
-}
-</style>
-
-
   <section class="container-fluid footer_section">
     <p>
       &copy; 2023 All Rights Reserved By

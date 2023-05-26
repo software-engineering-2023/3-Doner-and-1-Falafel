@@ -208,44 +208,57 @@
 <body>
   <h3>Create Bank Account</h3>
   
-  <form>
+  <form id="registrationForm" action="user_loans.html">
     <label for="accountNumber">Account Number<span class="required-indicator">*</span>:</label>
     <input type="text" id="accountNumber" name="accountNumber" required>
-
+  
     <label for="firstName">First Name<span class="required-indicator">*</span>:</label>
     <input type="text" id="firstName" name="firstName" required>
-
+  
     <label for="lastName">Last Name<span class="required-indicator">*</span>:</label>
     <input type="text" id="lastName" name="lastName" required>
-
+  
     <label for="email">Email<span class="required-indicator">*</span>:</label>
     <input type="email" id="email" name="email" required>
-
+  
     <label for="password">Password<span class="required-indicator">*</span>:</label>
     <input type="password" id="password" name="password" required>
-
+  
     <label for="confirmPassword">Confirm Password<span class="required-indicator">*</span>:</label>
     <input type="password" id="confirmPassword" name="confirmPassword" required>
-
+  
     <label for="initialDeposit">Initial Deposit<span class="required-indicator">*</span>:</label>
     <input type="number" id="initialDeposit" name="initialDeposit" required>
     <br>
-    <input type="submit" value="Create Account" onclick="window.location.href = 'user_account.html';">
+    <input type="submit" value="Create Account">
   </form>
   
-<script>
-    function validateForm() {
-        var inputs = document.getElementsByTagName("input");
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+  
+      var accountNumber = document.getElementById("accountNumber").value;
+      var firstName = document.getElementById("firstName").value;
+      var lastName = document.getElementById("lastName").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+      var initialDeposit = document.getElementById("initialDeposit").value;
+  
+      if (accountNumber === "" || firstName === "" || lastName === "" || email === "" || password === "" || confirmPassword === "" || initialDeposit === "") {
+        alert("Please fill in all the required fields.");
+        return; // Stop further execution
+      }
+  
+      // Perform necessary actions for account creation
+      alert("Account Created Successfully!");
+  
+      // Uncomment the following line to redirect after successful account creation
+       window.location.href = 'user.html';
+    });
+  </script>
+  
 
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].hasAttribute("required") && inputs[i].value === "") {
-                alert("Please fill in all the required fields.");
-                return false; // Prevent form submission
-            }
-        }
-
-        return true; // Allow form submission
-    }
 </script>
 </body>
 
