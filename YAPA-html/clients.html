@@ -139,11 +139,34 @@ body{
   background-color: #f76262;
   color: #fff;
 }
+.search-bar {
+  background-color: #151618;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-color: white;
+}
+
+.search-bar input[type="text"] {
+  width: 400px;
+  padding: 8px;
+  border-color: white;
+  background-color: #151618;
+  color: white;
+}
+
+.search-bar input[type="text"]::placeholder {
+  color: white;
+}
+
     
   </style>
 </head>
 <body>
-  <table class="cool-table">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search by client ID or name" oninput="filterTable()">
+  </div>
+  
+  <table class="cool-table" id="clientTable">
     <thead>
       <tr>
         <th>Client Name</th>
@@ -200,6 +223,31 @@ body{
       <!-- Add more rows for additional clients -->
     </tbody>
   </table>
+  
+  <script>
+  function filterTable() {
+    var input, filter, table, tbody, tr, td, i, j, visible;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("clientTable");
+    tbody = table.getElementsByTagName("tbody")[0];
+    tr = tbody.getElementsByTagName("tr");
+  
+    for (i = 0; i < tr.length; i++) {
+      visible = false;
+      for (j = 0; j < tr[i].cells.length; j++) {
+        td = tr[i].cells[j];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            visible = true;
+            break;
+          }
+        }
+      }
+      tr[i].style.display = visible ? "" : "none";
+    }
+  }
+  </script>
   
  
  <!-- end how section -->
