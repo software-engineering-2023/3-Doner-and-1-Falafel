@@ -154,6 +154,9 @@ body{
   background-color: #f76262;
   color: #fff;
 }
+.viewhistory{
+  padding: 10px;
+}
     </style>
   <h2>Loans Information</h2>
   <table class="cool-table">
@@ -255,27 +258,32 @@ body{
           <button onclick="rejectLoanRequest(this)">Reject</button>
         </td>
       </tr>
+      <!-- Add more rows here -->
     </tbody>
   </table>
+  
   <td class="loan-buttons">
     <a href="loanRequestHistory.html">
-  <button>View Loan Requests History</button>
-</a>
+      <button class="viewhistory">View Loan Requests History</button>
+    </a>
   </td>
-
+  
   <script>
     function acceptLoanRequest(button) {
       var row = button.parentNode.parentNode;
       // Perform necessary actions for accepting the loan request
       alert("Loan request accepted for client: " + row.cells[0].textContent);
+      row.remove(); // Remove the row
     }
-    
+  
     function rejectLoanRequest(button) {
       var row = button.parentNode.parentNode;
       // Perform necessary actions for rejecting the loan request
       alert("Loan request rejected for client: " + row.cells[0].textContent);
+      row.remove(); // Remove the row
     }
   </script>
+  
   
  <!-- end how section -->
 

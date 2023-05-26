@@ -160,6 +160,7 @@
         <th>Client ID</th>
         <th>Card Type</th>
         <th>Request Date</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -168,33 +169,41 @@
         <td>12345</td>
         <td>Debit Card</td>
         <td>2022-01-01</td>
+        <td>
+          <button onclick="acceptRequest(12345, this)">Accept</button>
+          <button onclick="rejectRequest(12345, this)">Reject</button>
+        </td>
       </tr>
       <tr>
         <td>Jane Smith</td>
         <td>67890</td>
         <td>Debit Card</td>
         <td>2022-03-15</td>
+        <td>
+          <button onclick="acceptRequest(67890, this)">Accept</button>
+          <button onclick="rejectRequest(67890, this)">Reject</button>
+        </td>
       </tr>
-      <tr>
-        <td>Michael Johnson</td>
-        <td>13579</td>
-        <td>Debit Card</td>
-        <td>2022-02-10</td>
-      </tr>
-      <tr>
-        <td>Sarah Williams</td>
-        <td>24680</td>
-        <td>Debit Card</td>
-        <td>2022-04-20</td>
-      </tr>
-      <tr>
-        <td>Robert Brown</td>
-        <td>97531</td>
-        <td>Credit Card</td>
-        <td>2022-05-05</td>
-      </tr>
+      <!-- Add more rows here -->
     </tbody>
   </table>
+  
+  <script>
+    function acceptRequest(clientId, button) {
+      // Perform necessary actions for accepting the request
+      alert("Accepted the request for Client ID: " + clientId);
+      button.parentNode.parentNode.remove(); // Remove the row
+    }
+  
+    function rejectRequest(clientId, button) {
+      // Perform necessary actions for rejecting the request
+      alert("Rejected the request for Client ID: " + clientId);
+      button.parentNode.parentNode.remove(); // Remove the row
+    }
+  </script>
+  
+  
+
   <section class="info_section layout_padding">
     <div class="container">
       <div class="row">
