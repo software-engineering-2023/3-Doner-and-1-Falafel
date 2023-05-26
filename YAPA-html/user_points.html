@@ -107,6 +107,7 @@
       font-size: 16px;
       cursor: pointer;
       margin-bottom: 20px;
+      margin: 4px;
     }
 
     #table-buttons {
@@ -120,7 +121,7 @@
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
-      margin-right: 10px;
+      margin: 4px;
     }
 
     table {
@@ -137,6 +138,7 @@
     th {
       background-color: #f2f2f2;
     }
+
   </style>
 </head>
 <body>
@@ -148,8 +150,9 @@
   <button id="redeem-button" onclick="redeemPoints()">Redeem Points</button>
 
   <div id="table-buttons">
-    <button class="table-button" onclick="viewRedeemedPoints()">Redeemed Points</button>
-    <button class="table-button" onclick="viewExpiredPoints()">Expired Points</button>
+    <button class="table-button" onclick="viewRedeemedPoints()">View Redeemed Points</button>
+    <br>
+    <button class="table-button" onclick="viewExpiredPoints()">View Expired Points</button>
   </div>
 
   <div id="redeemed-points-table" style="display: none;">
@@ -178,11 +181,11 @@
       </thead>
       <tbody>
         <tr>
-          <td>April 15, 2023</td>
+          <td>15/4/2023</td>
           <td>20</td>
         </tr>
         <tr>
-          <td>June 10, 2023</td>
+          <td>3/2/2023</td>
           <td>10</td>
         </tr>
       </tbody>

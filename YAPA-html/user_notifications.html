@@ -14,6 +14,7 @@
       margin: 10px;
       cursor: pointer;
     }
+
   </style>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -92,24 +93,24 @@
   <head>
     <title>Notifications</title>
     <style>
-      #search-bar {
-        margin-bottom: 20px;
-      }
-  
-      #search-input {
-        width: 300px;
-        padding: 5px;
-        font-size: 16px;
-      }
-  
-      #search-button {
-        background-color: #30ae69;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-      }
+         .search-bar {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-color: black;
+}
+
+.search-bar input[type="text"] {
+  width: 400px;
+  padding: 8px;
+  border-color: black;
+  background-color: white;
+  color: black;
+}
+
+.search-bar input[type="text"]::placeholder {
+  color: black;
+}
   
       #notification-list {
         list-style-type: none;
@@ -140,51 +141,52 @@
         </h2>
       </div>
   
-    <div id="search-bar">
-      <input type="text" id="search-input" placeholder="Search notifications..." />
-      <button id="search-button" onclick="searchNotifications()">Search</button>
-    </div>
-  
-    <ul id="notification-list">
-      <li class="notification">
-        <div class="notification-date">May 20, 2023</div>
-        <div class="notification-details">Notification 1 details...</div>
-      </li>
-      <li class="notification">
-        <div class="notification-date">May 22, 2023</div>
-        <div class="notification-details">Notification 2 details...</div>
-      </li>
-      <li class="notification">
-        <div class="notification-date">May 25, 2023</div>
-        <div class="notification-details">Notification 3 details...</div>
-      </li>
-      <li class="notification">
-        <div class="notification-date">May 27, 2023</div>
-        <div class="notification-details">Notification 4 details...</div>
-      </li>
-      <li class="notification">
-        <div class="notification-date">May 30, 2023</div>
-        <div class="notification-details">Notification 5 details...</div>
-      </li>
-    </ul>
-  
-    <script>
-      function searchNotifications() {
-        var searchQuery = document.getElementById('search-input').value;
-        var notifications = document.getElementsByClassName('notification');
-  
-        for (var i = 0; i < notifications.length; i++) {
-          var notification = notifications[i];
-          var details = notification.getElementsByClassName('notification-details')[0];
-          
-          if (details.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
-            notification.style.display = 'block';
-          } else {
-            notification.style.display = 'none';
+      <div class="search-bar">
+        <input type="text" id="searchBar" placeholder="Search by name or date" oninput="filterNotifications()">
+      </div>
+
+      <ul id="notification-list">
+        <li class="notification">
+          <div class="notification-date">May 20, 2023</div>
+          <div class="notification-details">Notification 1 details...</div>
+        </li>
+        <li class="notification">
+          <div class="notification-date">May 22, 2023</div>
+          <div class="notification-details">Notification 2 details...</div>
+        </li>
+        <li class="notification">
+          <div class="notification-date">May 25, 2023</div>
+          <div class="notification-details">Notification 3 details...</div>
+        </li>
+        <li class="notification">
+          <div class="notification-date">May 27, 2023</div>
+          <div class="notification-details">Notification 4 details...</div>
+        </li>
+        <li class="notification">
+          <div class="notification-date">May 30, 2023</div>
+          <div class="notification-details">Notification 5 details...</div>
+        </li>
+      </ul>
+      
+      <script>
+        function filterNotifications() {
+          var input = document.getElementById("searchBar").value.toLowerCase();
+          var notifications = document.getElementsByClassName("notification");
+      
+          for (var i = 0; i < notifications.length; i++) {
+            var notification = notifications[i];
+            var date = notification.querySelector(".notification-date").textContent.toLowerCase();
+            var details = notification.querySelector(".notification-details").textContent.toLowerCase();
+      
+            if (date.includes(input) || details.includes(input)) {
+              notification.style.display = "block";
+            } else {
+              notification.style.display = "none";
+            }
           }
         }
-      }
-    </script>
+      </script>
+      
   </body>
   
 

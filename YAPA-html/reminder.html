@@ -150,7 +150,7 @@
 </head>
 
 <head>
-  <title>Create Bank Account</title>
+  <title>Reminders</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -202,70 +202,170 @@
       color: red;
       font-weight: bold;
     }
+    .cool-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cool-table th,
+.cool-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  margin: 5px;
+}
+
+.cool-table th {
+  background-color: #30ae69;
+  color: #fff;
+  font-weight: bold;
+}
+
+.cool-table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.cool-table tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.cool-table td:last-child {
+  text-transform: capitalize;
+}
+
+.cool-table .report-status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.cool-table .report-status-handled {
+  background-color: #30ae69;
+  color: #fff;
+}
+
+.cool-table .report-status-unhandled {
+  background-color: #f76262;
+  color: #fff;
+}
 
   </style>
 </head>
 <body>
-  <h3>Set Reminder</h3>
+    <h3>Set Reminder</h3>
   
-  <form onsubmit="return setReminder(event)">
-    <label for="reminderDate">Reminder Date:</label>
-    <input type="date" id="reminderDate" name="reminderDate" required>
-
-    <label for="reminderTime">Reminder Time:</label>
-    <input type="time" id="reminderTime" name="reminderTime" required>
-
-    <label for="reminderMessage">Reminder Message:</label>
-    <textarea id="reminderMessage" name="reminderMessage" rows="4" cols="50" required></textarea>
-    <br>
-    <input type="submit" value="Set Reminder">
-</form>
-
- 
-<script>
-    function validateForm() {
+    <form onsubmit="return setReminder(event)">
+      <label for="reminderDate">Reminder Date:</label>
+      <input type="date" id="reminderDate" name="reminderDate" required>
+  
+      <label for="reminderTime">Reminder Time:</label>
+      <input type="time" id="reminderTime" name="reminderTime" required>
+  
+      <label for="reminderMessage">Reminder Message:</label>
+      <textarea id="reminderMessage" name="reminderMessage" rows="4" cols="50" required></textarea>
+      <br>
+      <input type="submit" value="Set Reminder">
+    </form>
+  
+  
+    <script>
+      function validateForm() {
         var inputs = document.getElementsByTagName("input");
-
+  
         for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].hasAttribute("required") && inputs[i].value === "") {
-                alert("Please fill in all the required fields.");
-                return false; // Prevent form submission
-            }
+          if (inputs[i].hasAttribute("required") && inputs[i].value === "") {
+            alert("Please fill in all the required fields.");
+            return false; // Prevent form submission
+          }
         }
-
+  
         return true; // Allow form submission
-    }
-</script>s
-
-<script>
-    function setReminder(event) {
+      }
+    </script>
+  
+    <script>
+      function setReminder(event) {
         event.preventDefault();
-
+  
         var reminderDate = document.getElementById("reminderDate").value;
         var reminderTime = document.getElementById("reminderTime").value;
         var reminderMessage = document.getElementById("reminderMessage").value;
-
+  
         var reminderDateTime = new Date(reminderDate + " " + reminderTime);
         var currentTime = new Date();
-
+  
         if (reminderDateTime <= currentTime) {
-            alert("Invalid reminder time. Please select a future date and time.");
-            return false;
+          alert("Invalid reminder time. Please select a future date and time.");
+          return false;
         }
-
+  
         var timeDifference = reminderDateTime.getTime() - currentTime.getTime();
-
+  
         setTimeout(function () {
-            alert("Reminder: " + reminderMessage);
+          alert("Reminder: " + reminderMessage);
         }, timeDifference);
-
+  
+        // Add the new reminder to the table
+        var table = document.querySelector(".cool-table tbody");
+        var newRow = table.insertRow();
+  
+        var messageCell = newRow.insertCell();
+        var dateCell = newRow.insertCell();
+        var timeCell = newRow.insertCell();
+  
+        messageCell.textContent = reminderMessage;
+        dateCell.textContent = reminderDate;
+        timeCell.textContent = reminderTime;
+  
+        // Reset the form values
+        document.getElementById("reminderDate").value = "";
+        document.getElementById("reminderTime").value = "";
+        document.getElementById("reminderMessage").value = "";
+  
         return true;
-    }
-</script>
-
-
- 
-</body>
+      }
+    </script>
+  
+    <h3>Reminders</h3>
+    <table class="cool-table">
+      <thead>
+        <tr>
+          <th>Reminder Message</th>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pay credit card bill</td>
+          <td>2023-06-01</td>
+          <td>10:00 AM</td>
+        </tr>
+        <tr>
+          <td>Pay electricity bill</td>
+          <td>2023-06-05</td>
+          <td>12:30 PM</td>
+        </tr>
+        <tr>
+          <td>Pay loan installment</td>
+          <td>2023-06-10</td>
+          <td>04:15 PM</td>
+        </tr>
+        <tr>
+          <td>Pay water bill</td>
+          <td>2023-06-15</td>
+          <td>08:00 AM</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  </body>
+  
 
 <section class="info_section layout_padding">
     <div class="container">
