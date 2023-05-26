@@ -77,18 +77,22 @@
             <h2 class="text-center mb-4">Sign Up</h2>
             <form>
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+                    <label for="name">Full Name </label required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Email </label required>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
                   </div>
               <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                <label for="username">Username</label required>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                <label for="password">Password</label required>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
               </div>
-              <button type="submit" class="btn-box">Sign Up</button>
+              <button type="submit" onclick="submitForm(event)" class="btn-box">Sign Up</button>
             </form>
             <p class="text-center mt-3">Already have an account? <a href="login.html">Login</a></p>
           </div>
@@ -96,6 +100,25 @@
       </div>
     </div>
   </div>
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); // Prevent the form from submitting and page refreshing
+  
+      // Get the values entered by the user
+      var name = document.getElementById('name').value;
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+  
+      // Perform any necessary validation here
+  
+      // Show the alert message
+      alert('Sign up successful!');
+  
+      // Redirect to the login page
+      window.location.href = 'login.html';
+    }
+  </script>
+  
 
   <!-- footer section -->
   <section class="container-fluid footer_section">
