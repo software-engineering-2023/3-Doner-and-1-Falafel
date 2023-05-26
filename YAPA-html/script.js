@@ -11,7 +11,12 @@ function login() {
         window.location.href = 'banker.html';
       }
       else{
+        if( (username === 'admin' && password === 'admin')){
+          window.location.href = 'admin.html';
+        }
+        else{
       alert('Invalid username or password');
+        }
       }
     }
   };
