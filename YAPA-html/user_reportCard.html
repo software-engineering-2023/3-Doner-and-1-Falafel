@@ -207,56 +207,77 @@
 </head>
 <body>
   <!-- <h3>Create Bank Account</h3> -->
-  
-  <div class="card-body">
-    <div class="heading_container">
-      <h2>
-        Report Credit Card
-      </h2>
-    </div>
-    <form>
-      <div class="form-group">
-        <label for="name">Credit Card Number</label>
-        <input type="number" class="form-control" id="name" placeholder="Enter your card number" required>
+
+    <div class="card-body">
+      <div class="heading_container">
+        <h2>
+          Report Credit Card
+        </h2>
       </div>
-      <button type="submit" onclick="submitForm(event)" class="btn-box">Freeze Card</button>
-      <a id="redirect-button" class="button-style hidden" href="user_cardapply.html">Issue new Card</a>
-    </form>
-  </div>
-  
-  <script>
-    function submitForm(event) {
-      event.preventDefault(); // Prevent the form from submitting and page refreshing
-  
-      // Get the form element that triggered the submit event
-      var form = event.target.form;
-  
-      // Check if the form is valid
-      if (form.checkValidity()) {
-        // Show the alert message
-        alert('You have freezed your card successfully!');
-        event.target.disabled = true;
-        var redirectButton = document.getElementById('redirect-button');
-        redirectButton.classList.remove('hidden');
-      } else {
-        // Form is not valid, display an error message or handle validation errors
-        alert('Please fill in all required fields.');
+      <form>
+        <div class="form-group" style="width: 400px; margin-left: 100px;">
+          <label for="name">Credit Card Number<span class="required-indicator">*</span>:</label>
+          <input type="number" class="form-control" id="name" placeholder="Enter your card number" class="form-control" required>
+        </div>
+        <div class="button-container" style="margin-left: 100px;">
+          <button type="submit" id="b" onclick="submitForm(event)" class="btn-box">Freeze Card</button>
+          <span class="redirect-buttons">
+            <a id="redirect-button1" class="button-style hidden" href="user_cardapply.html">Issue new Card</a>
+            <a id="redirect-button2" class="button-style hidden" href="user_cards.html" style="padding-left: 10px;">Later</a>
+          </span>
+        </div>
+      </form>
+    </div>
+    
+    <script>
+      function submitForm(event) {
+        event.preventDefault(); // Prevent the form from submitting and page refreshing
+    
+        // Get the form element that triggered the submit event
+        var form = event.target.form;
+    
+        // Check if the form is valid
+        if (form.checkValidity()) {
+          // Show the alert message
+          alert('You have frozen your card successfully!');
+          event.target.disabled = true;
+          event.target.classList.add('btn-dis');
+          var redirectButton = document.getElementById('redirect-button1');
+          redirectButton.classList.remove('hidden');
+          var redirectButton2 = document.getElementById('redirect-button2');
+          redirectButton2.classList.remove('hidden');
+        } else {
+          // Form is not valid, display an error message or handle validation errors
+          alert('Please fill in all required fields.');
+        }
       }
-    }
-  </script>
+    </script>
+    
+    <style>
+      .hidden {
+        display: none;
+      }
+      .btn-box {
+        padding: 10px 20px;
+        background-color: #30ae69;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-dis {
+        padding: 10px 20px;
+        background-color: #30ae695c;
+        color: white;
+        border: none;
+        cursor: initial;
+      }
+      .redirect-buttons {
+        margin-left: 10px;
+      }
+    </style>
+    
   
-  <style>
-    .hidden {
-      display: none;
-    }
-    .btn-box {
-      padding: 10px 20px;
-      background-color: #30ae69;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+  
   
   
 

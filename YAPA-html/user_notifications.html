@@ -141,33 +141,35 @@
         </h2>
       </div>
   
-      <div class="search-bar">
+      <div class="search-bar" style="padding-left: 160px;">
         <input type="text" id="searchBar" placeholder="Search by name or date" oninput="filterNotifications()">
       </div>
+      <div class="box_notifications">
+        <ul id="notification-list">
+          <li class="notification">
+            <div class="notification-date">May 26, 2023</div>
+            <div class="notification-details">We are pleased to inform you that our annual interest rates have been updated. Please review the new rates on our website.</div>
+          </li>
+          <li class="notification">
+            <div class="notification-date">May 5, 2023</div>
+            <div class="notification-details">Important: Password Reset Instructions. If you recently requested a password reset, please follow the instructions provided in the email sent to you.</div>
+          </li>
+          <li class="notification">
+            <div class="notification-date">April 25, 2023</div>
+            <div class="notification-details">Our mobile banking app has been updated! Download the latest version from your app store to access new features and enhanced security measures.</div>
+          </li>
+          <li class="notification">
+            <div class="notification-date">March 18, 2023</div>
+            <div class="notification-details">Reminder: Tax season is here. Make sure to gather all necessary documents and visit your nearest branch for assistance with tax-related inquiries.</div>
+          </li>
+          <li class="notification">
+            <div class="notification-date">February 3, 2023</div>
+            <div class="notification-details">Important Notice: Scheduled Maintenance. Our online banking services will be temporarily unavailable on February 5th, 2023, from 2:00 AM to 6:00 AM (EST) for system upgrades.</div>
+          </li>
+        </ul>
+      </div>
+    
 
-      <ul id="notification-list">
-        <li class="notification">
-          <div class="notification-date">May 20, 2023</div>
-          <div class="notification-details">Notification 1 details...</div>
-        </li>
-        <li class="notification">
-          <div class="notification-date">May 22, 2023</div>
-          <div class="notification-details">Notification 2 details...</div>
-        </li>
-        <li class="notification">
-          <div class="notification-date">May 25, 2023</div>
-          <div class="notification-details">Notification 3 details...</div>
-        </li>
-        <li class="notification">
-          <div class="notification-date">May 27, 2023</div>
-          <div class="notification-details">Notification 4 details...</div>
-        </li>
-        <li class="notification">
-          <div class="notification-date">May 30, 2023</div>
-          <div class="notification-details">Notification 5 details...</div>
-        </li>
-      </ul>
-      
       <script>
         function filterNotifications() {
           var input = document.getElementById("searchBar").value.toLowerCase();
@@ -188,7 +190,36 @@
       </script>
       
   </body>
-  
+  <style>
+    .box_notifications {
+      background-color: #ffffff;
+      border: 3px solid #30ae69;
+      border-radius: 4px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+
+    .notification-date {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .notification-details {
+      color: #666;
+    }
+
+    .notification {
+      margin-bottom: 15px;
+      border: 1px solid #30ae69;
+      transition: box-shadow 0.1s ease;
+    }
+
+    .notification:hover {
+      box-shadow: 0 0 5px #30ae69;
+    }
+  </style>
 
 
 

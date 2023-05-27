@@ -129,7 +129,7 @@
       font-weight: bold;
     }
 </style>
-<div class="heading_container">
+<!-- <div class="heading_container">
   <h2 style="color:rgb(0, 0, 0)">
     Credit Card Application
   </h2>
@@ -193,7 +193,73 @@
   // window.location.href = 'user_cards.html';
 }
 
+</script> -->
+
+
+<body>
+  <div class="heading_container">
+    <h2>
+      Credit Card Application
+    </h2>
+  </div>
+  <form id="registrationForm" action="user_loans.html" style="width: 400px; padding-left: 100px;">
+    <label for="gender">Gender<span class="required-indicator">*</span>:</label>
+    <select id="gender" name="gender" class="form-control"required>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select><br><br>
+  
+    <label for="fullname">Full Name<span class="required-indicator">*</span>:</label>
+    <input type="text" id="fullname" name="fullname" class="form-control" required>
+  
+    <label for="creditCardType">Credit Card Type<span class="required-indicator">*</span>:</label>
+    <select id="creditCardType" name="creditCardType" class="form-control"required>
+      <option value="">Select Card Type</option>
+      <option value="visa">Visa</option>
+      <option value="mastercard">Mastercard</option>
+      <option value="amex">American Express</option>
+    </select><br><br>
+  
+    <label for="amount">Account Number<span class="required-indicator">*</span>:</label>
+    <input type="number" id="amount" name="amount" class="form-control"required>
+  
+    <label for="period">Occupation<span class="required-indicator">*</span>:</label>
+    <input type="text" id="period" name="period" class="form-control"required>
+
+    <label for="period">Phone Number<span class="required-indicator">*</span>:</label>
+    <input type="text" id="phone" name="period" class="form-control"required>
+  
+    <br>
+    <input type="submit" value="Create Account">
+  </form>
+  
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+  
+      var accountNumber = document.getElementById("gender").value;
+      var firstName = document.getElementById("fullname").value;
+      var lastName = document.getElementById("loantype").value;
+      var email = document.getElementById("amount").value;
+      var password = document.getElementById("period").value;
+      var phone = document.getElementById("phone").value;
+      if (accountNumber === "" || firstName === "" || lastName === "" || email === "" || password === "" || phone==="") {
+        alert("Please fill in all the required fields.");
+        return; // Stop further execution
+      }
+  
+      // Perform necessary actions for account creation
+      alert("Loan Applied Successfully!");
+  
+      // Uncomment the following line to redirect after successful account creation
+       window.location.href = 'user_cards.html';
+    });
+  </script>
+  
+
 </script>
+</body>
 
 
   <section class="info_section layout_padding">

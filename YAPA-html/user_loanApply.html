@@ -129,65 +129,147 @@
       font-weight: bold;
     }
 </style>
-<div class="heading_container">
+<!-- <div class="heading_container">
     <h2 style="color:rgb(0, 0, 0)">
       Loan Application
     </h2>
   </div>
 </div>
 <div class="container">
-    <div class="box">
-      <div class="row">
-        <div class="detail-box">
-          <form action="user_loans.html" method="post" onsubmit="return validateLoanRequest(event)">
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select><br><br>
-  
-            <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required><br><br>
-  
-            <label for="loantype">Loan Type:</label>
-            <select id="loantype" name="loantype" required>
-              <option value="">Select Loan Type</option>
-              <option value="personal">Personal Loan</option>
-              <option value="home">Home Loan</option>
-              <option value="auto">Auto Loan</option>
-              <option value="other">Other</option>
-            </select><br><br>
-  
-            <label for="loanamount">Loan Amount:</label>
-            <input type="number" id="loanamount" name="loanamount" required><br><br>
-  
-            <label for="loanperiod">Loan Period (in months):</label>
-            <input type="number" id="loanperiod" name="loanperiod" required><br><br>
-  
-            <input type="submit" value="Submit">
-          </form>
-        </div>
+  <div class="box">
+    <div class="row">
+      <div class="detail-box">
+        <form id="registration" >
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select><br><br>
+
+          <label for="fullname">Full Name:</label>
+          <input type="text" id="fullname" name="fullname" required><br><br>
+
+          <label for="loantype">Loan Type:</label>
+          <select id="loantype" name="loantype" required>
+            <option value="">Select Loan Type</option>
+            <option value="personal">Personal Loan</option>
+            <option value="home">Home Loan</option>
+            <option value="auto">Auto Loan</option>
+            <option value="other">Other</option>
+          </select><br><br>
+
+          <label for="loanamount">Loan Amount:</label>
+          <input type="number" id="loanamount" name="loanamount" required><br><br>
+
+          <label for="loanperiod">Loan Period (in months):</label>
+          <input type="number" id="loanperiod" name="loanperiod" required><br><br>
+
+          <input type="submit" value="Submit">
+        </form>
       </div>
     </div>
   </div>
+</div>
+
+<script>
+  // function validateLoanRequest(event) {
+  //   var inputs = document.getElementsByTagName("input");
+
+  //   for (var i = 0; i < inputs.length; i++) {
+  //     if (inputs[i].hasAttribute("required") && inputs[i].value === "") {
+  //       alert("Please fill in all the required fields.");
+  //       event.preventDefault(); // Prevent form submission
+  //       return false;
+  //     }
+  //   }
+
+  //   // Redirect to user_loans.html
+  //   window.location.href = "user_loans.html";
+  //   return true;
+  // }
+
+  document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
   
-  <script>
-    function validateLoanRequest(event) {
-      var inputs = document.getElementsByTagName("input");
+      var accountNumber = document.getElementById("gender").value;
+      var firstName = document.getElementById("fullname").value;
+      var lastName = document.getElementById("loantype").value;
+      var email = document.getElementById("loanamount").value;
+      var password = document.getElementById("loanperiod").value;
   
-      for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].hasAttribute("required") && inputs[i].value === "") {
-          alert("Please fill in all the required fields.");
-          event.preventDefault(); // Prevent form submission
-          return false;
-        }
+      if (accountNumber === "" || firstName === "" || lastName === "" || email === "" ) {
+        alert("Please fill in all the required fields.");
+        return;
       }
   
-      return true; // Allow form submission
-    }
+      alert("Loan Appllied Successfully!");
+       window.location.href = 'user_loans.html';
+    });
+</script> -->
+
+<body>
+  <div class="heading_container">
+    <h2>
+      Loan Apply
+    </h2>
+  </div>
+  <form id="registrationForm" action="user_loans.html" style="width: 400px; padding-left: 100px;">
+    <label for="gender">Gender<span class="required-indicator">*</span>:</label>
+    <select id="gender" name="gender" class="form-control"required>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select><br><br>
+  
+    <label for="fullname">Full Name<span class="required-indicator">*</span>:</label>
+    <input type="text" id="fullname" name="fullname" class="form-control" required>
+  
+    <label for="loantype">Loan Type<span class="required-indicator">*</span>:</label>
+    <select id="loantype" name="loantype" class="form-control"required>
+      <option value="">Select Loan Type</option>
+      <option value="personal">Personal Loan</option>
+      <option value="home">Home Loan</option>
+      <option value="auto">Auto Loan</option>
+      <option value="other">Other</option>
+    </select><br><br>
+  
+    <label for="amount">Loan Amount<span class="required-indicator">*</span>:</label>
+    <input type="number" id="amount" name="amount" class="form-control"required>
+  
+    <label for="period">Loan Period<span class="required-indicator">*</span>:</label>
+    <input type="number" id="period" name="period" class="form-control"required>
+  
+    <br>
+    <input type="submit" value="Create Account">
+  </form>
+  
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+  
+      var accountNumber = document.getElementById("gender").value;
+      var firstName = document.getElementById("fullname").value;
+      var lastName = document.getElementById("loantype").value;
+      var email = document.getElementById("amount").value;
+      var password = document.getElementById("period").value;
+  
+      if (accountNumber === "" || firstName === "" || lastName === "" || email === "" || password === "") {
+        alert("Please fill in all the required fields.");
+        return; // Stop further execution
+      }
+  
+      // Perform necessary actions for account creation
+      alert("Loan Applied Successfully!");
+  
+      // Uncomment the following line to redirect after successful account creation
+       window.location.href = 'user_loans.html';
+    });
   </script>
   
+
+</script>
+</body>
 
 
   <section class="info_section layout_padding">
