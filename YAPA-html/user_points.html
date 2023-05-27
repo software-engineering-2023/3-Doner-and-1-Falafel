@@ -88,60 +88,6 @@
   </div>
 <head>
   <title>Points Page</title>
-  <style>
-    #points {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    #money {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    #redeem-button {
-      background-color: #30ae69;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-bottom: 20px;
-      margin: 4px;
-    }
-
-    #table-buttons {
-      margin-bottom: 20px;
-    }
-
-    .table-button {
-      background-color: #30ae69;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 4px;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th, td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-  </style>
-</head>
-<body>
   <div class="heading_container">
     <h2 style="color:rgb(0, 0, 0)">
       Points
@@ -149,62 +95,123 @@
   </div>
 </div>
 
-  <div id="points">Your points: <span id="points-amount">100</span></div>
-  <div id="money">Equivalent money: $<span id="money-amount">10</span></div>
+</head>
+<body>
+  <style>
+    .box {
+      background-color: #ffffff;
+      border: 3px solid #30ae69;
+      border-radius: 4px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+  
+    #points,
+    #money {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+  
+    #points span,
+    #money span {
+      font-weight: bold;
+    }
+  
+    .button {
+      background-color: #30ae69;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+      width: 250px;
+      height: 50px;
+    }
+  
+    .button:hover {
+      background-color: #2a965c;
+    }
+    h2 {
+    color: #000000;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
 
-  <button id="redeem-button" onclick="redeemPoints()">Redeem Points</button>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
 
-  <div id="table-buttons">
-    <button class="table-button" onclick="viewRedeemedPoints()">View Redeemed Points</button>
-    <br>
-    <button class="table-button" onclick="viewExpiredPoints()">View Expired Points</button>
-  </div>
+  th, td {
+    padding: 10px;
+    border: 1px solid #30ae69;
+  }
 
-  <div id="redeemed-points-table" style="display: none;">
-    <div class="heading_container">
-      <h2 style="color:rgb(0, 0, 0)">
-        Redeemed Points
-      </h2>
+  th {
+    background-color: #30ae69;
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  </style>
+  
+  <div class="box">
+    <div id="points">Your points: <span id="points-amount">100</span></div>
+    <div id="money">Equivalent money: $<span id="money-amount">10</span></div>
+  
+    <button id="redeem-button" class="button" onclick="redeemPoints()">Redeem Points</button>
+  
+    <div id="table-buttons">
+      <button class="button" onclick="viewRedeemedPoints()">View Redeemed Points</button>
+      <br>
+      <button class="button" onclick="viewExpiredPoints()">View Expired Points</button>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Points</th>
-        </tr>
-      </thead>
-      <tbody id="redeemed-points-body">
-        <!-- Redeemed points will be dynamically added here -->
-      </tbody>
-    </table>
-  </div>
-
-  <div id="expired-points-table" style="display: none;">
-    <div class="heading_container">
-      <h2 style="color:rgb(0, 0, 0)">
-        Expired Points
-      </h2>
+  
+    <div id="redeemed-points-table" style="display: none;">
+      <h2>Redeemed Points</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody id="redeemed-points-body">
+          <!-- Redeemed points will be dynamically added here -->
+        </tbody>
+      </table>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Points</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>15/4/2023</td>
-          <td>20</td>
-        </tr>
-        <tr>
-          <td>3/2/2023</td>
-          <td>10</td>
-        </tr>
-      </tbody>
-    </table>
+  
+    <div id="expired-points-table" style="display: none;">
+      <h2>Expired Points</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>15/4/2023</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>3/2/2023</td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
+  
+</div>
   <script>
     function redeemPoints() {
       var pointsAmount = document.getElementById('points-amount').innerText;
