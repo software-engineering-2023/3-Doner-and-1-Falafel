@@ -166,7 +166,6 @@
     
     body{
         background-color: white;
-        padding: 10px;
     }
     .cool-table {
   width: 100%;
@@ -242,11 +241,28 @@
     padding: 10px;
     margin-bottom: 10px;
   }
+  .reminder{
+    padding: 10px 20px;
+      background-color: #30ae69;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border: black;
+      margin-bottom: 10px;
+      margin-top: 15px;
+      margin-left: 10px;
+  }
+  
   </style>
 </head>
 <body>
     <section class="top">
-    <h4 class="title_">Personal Information</h4>
+      <div class="heading_container">
+        <h2 style="color:rgb(0, 0, 0)">
+          Personal Information
+        </h2>
+      </div>
+    </div>
 <label for="email" class="email-label">Email: <span id="email" class="email-value">johndoe@gmail.com</span> </label>
 <br>
     <label for="username" class="username-label">Username: <span id="username" class="username-value">JohnDoe</span>  </label>
@@ -312,50 +328,60 @@ function changePassword() {
   closeChangePasswordContainer();
 }
 </script>
+<button onclick="window.location.href = 'reminder.html';" class="reminder">Reminders</button>
 <br>
-<h4 class="title_">Bank Accounts</h4>
+<div class="heading_container">
+  <h2 style="color:rgb(0, 0, 0)">
+    Bank Accounts
+  </h2>
+</div>
+</div>
 </section>
 
     
-    <table class="cool-table">
-        <thead>
-          <tr>
-            <th>Account Number</th>
-            <th>Balance</th>
-            <th>Transactions</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>123456789</td>
-            <td>$5,000.00</td>
-            <td>
-              <a href="user_transactions.html">
-                <button>View Transactions</button>
-              </a>
-            </td>
-            <td>
-              <button class="close-btn" onclick="removeRow(this)">Close Account</button>
-            </td>
-          </tr>
-          <tr>
-            <td>987654321</td>
-            <td>$2,500.00</td>
-            <td>
-              <a href="user_transactions.html">
-                <button>View Transactions</button>
-              </a>
-            </td>
-            <td>
-              <button class="close-btn" onclick="removeRow(this)">Close Account</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<table class="cool-table">
+  <thead>
+    <tr>
+      <th>Account Number</th>
+      <th>Account Type</th>
+      <th>Balance</th>
+      <th>Transactions</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>123456789</td>
+      <td>Savings</td>
+      <td>$5,000.00</td>
+      <td>
+        <a href="user_transactions.html">
+          <button>View Transactions</button>
+        </a>
+      </td>
+      <td>
+        <button class="close-btn" onclick="removeRow(this)">Close Account</button>
+      </td>
+    </tr>
+    <tr>
+      <td>987654321</td>
+      <td>Checking</td>
+      <td>$2,500.00</td>
+      <td>
+        <a href="user_transactions.html">
+          <button>View Transactions</button>
+        </a>
+      </td>
+      <td>
+        <button class="close-btn" onclick="removeRow(this)">Close Account</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
       <br>
-      <button onclick="window.location.href = 'create_Account.html';" class="addnew">Add new Bank Account</button>
-      <button onclick="window.location.href = 'reminder.html';" class="addnew">Add Reminder</button>
+      <button onclick="window.location.href = 'create_Account.html';" class="reminder">Add new Bank Account</button>
+      <br>
 
       
       <script>

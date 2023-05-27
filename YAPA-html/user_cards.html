@@ -87,7 +87,7 @@
          table {
            border-collapse: collapse;
            width: 100%;
-           margin-bottom: 20px;
+           margin-bottom: 10px;
            background-color: white; 
          }
          
@@ -132,6 +132,7 @@
        font-weight: bold;
      }
      
+     
      .cool-table tr:hover {
        background-color: #f2f2f2;
      }
@@ -163,31 +164,107 @@
      }
          </style>
          <div class="heading_container">
+          <h2 style="color:rgb(0, 0, 0)">
+            Credit Cards
+          </h2>
+         </div>
+         <style>
+          .cvv-container {
+            position: relative;
+            display: inline-block;
+          }
+        
+          .cvv {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        
+          .cvv-container:hover .cvv {
+            visibility: visible;
+          }
+          .cvv-container:hover .cvv2 {
+            visibility: hidden;
+          }
+          .vague{
+            color: #404b65;
+            font-size: small;
+            font-style:oblique;
+          }
+          
+
+        </style>
+        
+        <table class="cool-table">
+          <thead>
+            <tr>
+              <th>Card Number</th>
+              <th>Card Holder Name</th>
+              <th>Issue Date</th>
+              <th>CVV <span class="vague">(hover on it to display it)</span></th>
+              <th>Expiry Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9573 6748 5747 9922</td>
+              <td>Ashraf Karam</td>
+              <td>01-04-2023</td>
+              <td>
+                <div class="cvv-container">
+                  <span class="cvv2">***</span>
+                  <span class="cvv">123</span>
+                </div>
+              </td>
+              <td>27-09-2025</td>
+            </tr>
+            <tr>
+              <td>9573 6748 5747 9923</td>
+              <td>Youssef Bassem</td>
+              <td>02-03-2023</td>
+              <td>
+                <div class="cvv-container">
+                  <span class="cvv2">***</span>
+                  <span class="cvv">456</span>
+                </div>
+              </td>
+              <td>27-06-2025</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+          
+         <div class="heading_container">
             <h2 style="color:rgb(0, 0, 0)">
               Credit Card Transactions
             </h2>
           </div>
         </div>
-       <table class="cool-table">
-         <thead>
-           <tr>
-             <th>Credit Card Number</th>
-             <th>Date</th>
-             <th>Amount</th>
-         </thead>
-         <tbody>
-           <tr>
-             <td>1000234</td>
-             <td>01-04-2023</td>
-             <td>$100.00</td>
+        <table class="cool-table">
+          <thead>
+            <tr>
+              <th>Credit Card Number</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Recipient</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9573 6748 5747 9922</td>
+              <td>01-04-2023 10:00 pm</td>
+              <td>$100.00</td>
+              <td>McDonalds Merghany</td>
+            </tr>
+            <tr>
+             <td>9573 6748 5747 9923</td>
+             <td>02-03-2023 10:55 am</td>
+             <td>$75.00</td>
+             <td>Zara CFC</td>
            </tr>
-           <tr>
-            <td>1005432</td>
-            <td>02-03-2023</td>
-            <td>$75.00</td>
-          </tr>
-         </tbody>
-       </table>
+          </tbody>
+        </table>
      
          </tbody>
        </table>
@@ -243,7 +320,6 @@
               </p>
             </div>
           </div>
-          
       </section>
 
     <section class="info_section layout_padding">

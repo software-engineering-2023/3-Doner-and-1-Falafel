@@ -287,14 +287,14 @@ a:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 45px 60px;
+  padding: 10px 15px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
 .how_section .how_container .box {
   text-align: center;
-  margin: 10px;
+  margin: 7px;
   min-width: 200px;
   width: 325px;
 }
@@ -316,7 +316,7 @@ a:focus {
 }
 
 .how_section .how_container .box .detail-box {
-  margin-top: 15px;
+  margin-top: 7px;
 }
 
 .how_section .how_container .box .detail-box h5 {
@@ -350,7 +350,7 @@ a:focus {
 }
 
 .how_section .how_container .box:hover .detail-box {
-  margin-top: 15px;
+  margin-top: 7px;
 }
 
 .how_section .how_container .box:hover .detail-box h5::before {
@@ -372,7 +372,7 @@ a:focus {
 
 .how_section .btn-box a {
   display: inline-block;
-  padding: 10px 45px;
+  padding: 10px 15px;
   background-color: #171717;
   border: 1px solid #171717;
   color: #ffffff;

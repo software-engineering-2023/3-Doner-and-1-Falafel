@@ -252,6 +252,9 @@
   background-color: #f76262;
   color: #fff;
 }
+.inputss{
+  width: 300px;
+}
 
   </style>
 </head>
@@ -260,13 +263,13 @@
   
     <form onsubmit="return setReminder(event)">
       <label for="reminderDate">Reminder Date:</label>
-      <input type="date" id="reminderDate" name="reminderDate" required>
+      <input type="date" class="inputss" id="reminderDate" name="reminderDate" required>
   
       <label for="reminderTime">Reminder Time:</label>
-      <input type="time" id="reminderTime" name="reminderTime" required>
+      <input type="time" class="inputss" id="reminderTime" name="reminderTime" required>
   
       <label for="reminderMessage">Reminder Message:</label>
-      <textarea id="reminderMessage" name="reminderMessage" rows="4" cols="50" required></textarea>
+      <textarea id="reminderMessage" class="inputss" name="reminderMessage" rows="4" cols="50" required></textarea>
       <br>
       <input type="submit" value="Set Reminder">
     </form>
@@ -301,6 +304,9 @@
         if (reminderDateTime <= currentTime) {
           alert("Invalid reminder time. Please select a future date and time.");
           return false;
+        }
+        else{
+          alert("Reminder has been set at " + document.getElementById("reminderTime").value);
         }
   
         var timeDifference = reminderDateTime.getTime() - currentTime.getTime();
