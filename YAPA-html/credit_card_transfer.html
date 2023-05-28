@@ -265,47 +265,11 @@
             </form>
           </div>
         </div>
-    
-        <div class="carousel-slide transfer-money">
-          <h2>Transfer Money</h2>
-          <div class="col-md-5">
-            <form id="transfer-money-form" action="user.html">
-              <div class="form-group">
-                <label for="billType">Transaction Type<span class="required-indicator">*</span>:</label>
-                <select id="billType" name="billType" class="form-control" required>
-                  <option value="">Select Transaction Type</option>
-                  <option value="internal">Internal</option>
-                  <option value="domestic">Domestic</option>
-                  <option value="international">International</option>
-                </select>
-              </div>
-    
-              <div class="form-group">
-                <label for="toAccount">To Account<span class="required-indicator">*</span>:</label>
-                <input type="text" class="form-control" id="toAccount" placeholder="Enter account to transfer to" required>
-              </div>
-    
-              <div class="form-group">
-                <label for="amount">Amount<span class="required-indicator">*</span>:</label>
-                <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
-              </div>
-    
-              <div class="form-group">
-                <label for="desc">Description</label>
-                <input type="text" class="form-control" id="desc" placeholder="Enter description">
-              </div>
-    
-              <button type="submit" onclick="submitForm(event, 'transfer-money-form')" class="btn-box">Submit</button>
-            </form>
-          </div>
-        </div>
       </div>
     
-        <div class="carousel-controls">
-          <div class="arrow disabled prev-arrow">&lt;</div>
-          <div class="arrow next-arrow">&gt;</div>
-        </div>
-      </div>
+       
+    
+        
     
       <div class="next-slide-description"></div>
     
@@ -330,19 +294,24 @@
     event.preventDefault();
 
     var form = document.getElementById(formId);
+    var r = form.querySelectorAll("input[required]");
 
     if (!validateRequiredFields(form)) {
       // Display an error message or perform any other actions
       alert("Please fill in all the required fields.");
       return;
     }
+    if (r[0].value.trim() < 0) {
+            alert("Cannot pay negative amount");
+            return;
+          }
 
     // Form is valid, proceed with submission
     // Simulate successful payment
     alert('Payment was successful!');
 
     // Redirect to user.html
-    window.location.href = 'user.html';
+    window.location.href = 'user_cards.html';
   }
         document.addEventListener('DOMContentLoaded', function () {
           var carousel = document.querySelector('.carousel');

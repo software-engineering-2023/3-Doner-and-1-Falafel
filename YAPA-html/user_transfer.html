@@ -279,71 +279,95 @@
                   <option value="international">International</option>
                 </select>
               </div>
-    
+        
               <div class="form-group">
                 <label for="toAccount">To Account<span class="required-indicator">*</span>:</label>
                 <input type="text" class="form-control" id="toAccount" placeholder="Enter account to transfer to" required>
               </div>
-    
+        
               <div class="form-group">
                 <label for="amount">Amount<span class="required-indicator">*</span>:</label>
                 <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
               </div>
-    
+        
               <div class="form-group">
                 <label for="desc">Description</label>
                 <input type="text" class="form-control" id="desc" placeholder="Enter description">
               </div>
-    
+              <label for="eSignature" class="appPopup-label">E-Signature<span class="required-indicator">*</span>:</label>
+              <div style="margin-bottom: 20px;">
+                <canvas id="signatureCanvas" width="230" height="58" style="border: 1px solid black;" required></canvas>
+                <br>
+                <a href="#" onclick="clearSignature()">Clear</a>
+              </div>
+                      
               <button type="submit" onclick="submitForm(event, 'transfer-money-form')" class="btn-box">Submit</button>
             </form>
           </div>
         </div>
-      </div>
-    
+        
         <div class="carousel-controls">
           <div class="arrow disabled prev-arrow">&lt;</div>
           <div class="arrow next-arrow">&gt;</div>
         </div>
-      </div>
-    
-      <div class="next-slide-description"></div>
-    
-      <script>
-   function validateRequiredFields(form) {
-    var requiredFields = form.querySelectorAll("input[required], select[required]");
-    var isFormValid = true;
+        </div>
+        
+        <div class="next-slide-description"></div>
+        
+        <script>
+        function validateRequiredFields(form) {
+          var requiredFields = form.querySelectorAll("input[required],select[required]");
+          var isFormValid = true;
+        
+          for (var i = 0; i < requiredFields.length; i++) {
+            if (requiredFields[i].value.trim() === "") {
+              requiredFields[i].classList.add("invalid-field");
+              isFormValid = false;
+            } else {
+              requiredFields[i].classList.remove("invalid-field");
+            }
+          }
+        
+          // Check if the canvas is empty
+          var canvas = form.querySelector("#signatureCanvas");
+          var context = canvas.getContext("2d");
+          var canvasIsEmpty = context.getImageData(0, 0, canvas.width, canvas.height).data.every(pixel => pixel === 0);
+        
+          if (canvasIsEmpty) {
+            canvas.classList.add("invalid-field");
+            isFormValid = false;
+          } else {
+            canvas.classList.remove("invalid-field");
+          }
+        
+          return isFormValid;
+        }
+        
+        function submitForm(event, formId) {
+          event.preventDefault();
+        
+          var form = document.getElementById(formId);
+          var r = form.querySelectorAll("input[required]");
+        
+          if (!validateRequiredFields(form)) {
+            // Display an error message or perform any other actions
+            alert("Please fill in all the required fields.");
+            return;
+          }
+          if (r[1].value.trim() < 0) {
+            alert("Cannot transfer negative amount");
+            return;
+          }
+        
+          // Form is valid, proceed with submission
+          // Simulate successful payment
+          alert('Payment was successful!');
+        
+          // Redirect to user.html
+          window.location.href = 'user.html';
+        }
 
-    for (var i = 0; i < requiredFields.length; i++) {
-      if (requiredFields[i].value.trim() === "") {
-        requiredFields[i].classList.add("invalid-field");
-        isFormValid = false;
-      } else {
-        requiredFields[i].classList.remove("invalid-field");
-      }
-    }
-
-    return isFormValid;
-  }
-
-  function submitForm(event, formId) {
-    event.preventDefault();
-
-    var form = document.getElementById(formId);
-
-    if (!validateRequiredFields(form)) {
-      // Display an error message or perform any other actions
-      alert("Please fill in all the required fields.");
-      return;
-    }
-
-    // Form is valid, proceed with submission
-    // Simulate successful payment
-    alert('Payment was successful!');
-
-    // Redirect to user.html
-    window.location.href = 'user.html';
-  }
+        
         document.addEventListener('DOMContentLoaded', function () {
           var carousel = document.querySelector('.carousel');
           var carouselContainer = carousel.querySelector('.carousel-container');
@@ -388,6 +412,36 @@
           updateCarousel();
         });
        
+        const canvas = document.getElementById('signatureCanvas');
+                    const ctx = canvas.getContext('2d');
+                    let isDrawing = false;
+                    canvas.addEventListener('mousedown', startDrawing);
+                    canvas.addEventListener('mousemove', draw);
+                    canvas.addEventListener('mouseup', stopDrawing);
+                    canvas.addEventListener('mouseout', stopDrawing);
+                    function startDrawing(e) {
+                        isDrawing = true;
+                        draw(e);
+                    }
+                    function draw(e) {
+                        if (!isDrawing) return;
+                        ctx.lineWidth = 2;
+                        ctx.lineCap = 'round';
+                        const rect = canvas.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        ctx.lineTo(x, y);
+                        ctx.stroke();
+                        ctx.beginPath();
+                        ctx.moveTo(x, y);
+                    }
+                    function stopDrawing() {
+                        isDrawing = false;
+                    }
+                    function clearSignature() {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+
       </script>
     </body>
       
@@ -442,6 +496,7 @@
     text-align: center;
 }
 
+
 .popup-text {
     padding: 10px;
     font-weight: bold;
@@ -457,6 +512,12 @@
     border-radius: 5px;
     transition: all 0.3s ease;
     cursor: pointer;
+}
+.sig{
+  margin:15px;
+}
+.light-grey-button {
+  background-color: lightgrey;
 }
 
     /* Style for the button icon */
@@ -691,6 +752,7 @@
     transition: all 0.3s ease;
     cursor: pointer;
 }
+
 
     /* Style for the button icon */
     .slide-out-button i {
