@@ -73,18 +73,19 @@
         <div class="col-md-6">
           <form id="send-announcement-form" action="admin.html">
             <div class="form-group">
-              <label for="announcementType">Announcement Type<span class="required-indicator">*</span>:</label>
-              <select id="announcementType" name="announcementType" class="form-control" required>
-                <option value="">Select Announcement Type</option>
-                <option value="announcement">Announcement</option>
-                <option value="important-notice">Important Notice</option>
-              </select>
-            </div>
-  
-            <div class="form-group">
-              <label for="description">Description<span class="required-indicator">*</span>:</label>
-              <textarea id="description" name="description" class="form-control" placeholder="Enter description" required></textarea>
-            </div>
+                <label for="announcementType"><strong>Announcement Type<span class="required-indicator">*</span>:</strong></label>
+                <select id="announcementType" name="announcementType" class="form-control" required>
+                  <option value="">Select Announcement Type</option>
+                  <option value="announcement">Announcement</option>
+                  <option value="important-notice">Important Notice</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="description"><strong>Description<span class="required-indicator">*</span>:</strong></label>
+                <textarea id="description" name="description" class="form-control" placeholder="Enter description" required></textarea>
+              </div>
+              
   
             <button type="submit" class="btn-box">Submit</button>
           </form>
@@ -92,7 +93,22 @@
       </div>
     </div>
   </div>
-  
+  <style>
+    .btn-box {
+background-color: #30ae69;
+color: #ffffff;
+border: none;
+border-radius: 4px;
+padding: 10px 20px;
+cursor: pointer;
+width: 250px;
+height: 50px;
+}
+
+.btn-box:hover {
+background-color: #2a965c;
+}
+</style>
   <script>
     document.getElementById('send-announcement-form').addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent form submission
