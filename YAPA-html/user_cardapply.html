@@ -198,23 +198,21 @@
 
 <body>
   <div class="heading_container">
-    <h2>
-      Credit Card Application
-    </h2>
+    <h2>Credit Card Application</h2>
   </div>
-  <form id="registrationForm" action="user_loans.html" style="width: 400px; padding-left: 100px;">
+  <form id="registrationForm" action="user_cards.html" style="width: 400px; padding-left: 100px;">
     <label for="gender">Gender<span class="required-indicator">*</span>:</label>
-    <select id="gender" name="gender" class="form-control"required>
+    <select id="gender" name="gender" class="form-control" required>
       <option value="">Select Gender</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select><br><br>
   
     <label for="fullname">Full Name<span class="required-indicator">*</span>:</label>
-    <input type="text" id="fullname" name="fullname" class="form-control" required>
+    <input type="text" id="fullname" name="fullname" class="form-control" required pattern="[A-Za-z ]+">
   
     <label for="creditCardType">Credit Card Type<span class="required-indicator">*</span>:</label>
-    <select id="creditCardType" name="creditCardType" class="form-control"required>
+    <select id="creditCardType" name="creditCardType" class="form-control" required>
       <option value="">Select Card Type</option>
       <option value="visa">Visa</option>
       <option value="mastercard">Mastercard</option>
@@ -222,44 +220,42 @@
     </select><br><br>
   
     <label for="amount">Account Number<span class="required-indicator">*</span>:</label>
-    <input type="number" id="amount" name="amount" class="form-control"required>
+    <input type="number" id="amount" name="amount" class="form-control" required min="0">
   
     <label for="period">Occupation<span class="required-indicator">*</span>:</label>
-    <input type="text" id="period" name="period" class="form-control"required>
-
-    <label for="period">Phone Number<span class="required-indicator">*</span>:</label>
-    <input type="text" id="phone" name="period" class="form-control"required>
+    <input type="text" id="period" name="period" class="form-control" required pattern="[A-Za-z ]+">
+  
+    <label for="phone">Phone Number<span class="required-indicator">*</span>:</label>
+    <input type="text" id="phone" name="phone" class="form-control" required minlength="11" maxlength="11" pattern="[0-9]+" oninput="validatePhoneNumber(this)">
   
     <br>
-    <input type="submit" value="Create Account">
+    <input type="submit" value="Submit Application">
   </form>
-  <button onclick="window.location.href='user_cards.html'" style="margin: 5px;">Back</button>
   
+  <button onclick="window.location.href='user_cards.html'" style="margin: 5px;">Back</button>
+
   <script>
     document.getElementById("registrationForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent form submission
+    event.preventDefault();
+    alert("Credit Card request has been successfully sent!");
+    window.location.href="user_cards.html";
+  });
+    function validatePhoneNumber(input) {
+      var phoneNumber = input.value;
+      
+      // Remove any non-digit characters from the phone number
+      phoneNumber = phoneNumber.replace(/\D/g, '');
   
-      var accountNumber = document.getElementById("gender").value;
-      var firstName = document.getElementById("fullname").value;
-      var lastName = document.getElementById("loantype").value;
-      var email = document.getElementById("amount").value;
-      var password = document.getElementById("period").value;
-      var phone = document.getElementById("phone").value;
-      if (accountNumber === "" || firstName === "" || lastName === "" || email === "" || password === "" || phone==="") {
-        alert("Please fill in all the required fields.");
-        return; // Stop further execution
+      if (!phoneNumber.startsWith("01") || phoneNumber.length !== 11 || phoneNumber < 0) {
+        input.setCustomValidity("invalid phone number");
+      } else {
+        input.setCustomValidity(""); // Reset the custom validity
       }
-  
-      // Perform necessary actions for account creation
-      alert("Loan Applied Successfully!");
-  
-      // Uncomment the following line to redirect after successful account creation
-       window.location.href = 'user_cards.html';
-    });
+    }
   </script>
   
 
-</script>
+
 </body>
 
 

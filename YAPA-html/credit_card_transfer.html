@@ -305,6 +305,10 @@
             alert("Cannot pay negative amount");
             return;
           }
+          if (r[0].value.trim() == 0) {
+            alert("Cannot transfer amount of 0");
+            return;
+          }
 
     // Form is valid, proceed with submission
     // Simulate successful payment

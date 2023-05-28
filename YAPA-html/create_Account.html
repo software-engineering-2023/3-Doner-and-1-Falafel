@@ -213,45 +213,45 @@
   </div>
   <form id="registrationForm" action="user_loans.html" style="width: 400px; margin-left: 100px;">
     <label for="accountNumber">Account Name<span class="required-indicator">*</span>:</label>
-    <input type="text" id="accountNumber" name="accountNumber" class="form-control"required>
-
+    <input type="text" id="accountNumber" name="accountNumber" class="form-control" required pattern="[A-Za-z ]+">
+  
     <label for="initialDeposit">Initial Deposit<span class="required-indicator">*</span>:</label>
-    <input type="number" id="initialDeposit" name="initialDeposit" class="form-control"required>
-
+    <input type="number" id="initialDeposit" name="initialDeposit" class="form-control" required min="0">
+  
     <label for="password">Password<span class="required-indicator">*</span>:</label>
-    <input type="password" id="password" name="password"class="form-control" required>
+    <input type="password" id="password" name="password" class="form-control" required>
+    
   
     <label for="confirmPassword">Confirm Password<span class="required-indicator">*</span>:</label>
-    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"required>
+    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+    <p id="passwordMismatchError" style="color: red; display: none;">Passwords do not match.</p>
   
     <br>
     <input type="submit" value="Create Account">
   </form>
   <button onclick="window.location.href='user_account.html'" style="margin: 5px;">Back</button>
   <script>
+
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var passwordMismatchError = document.getElementById("passwordMismatchError");
+
+    if (password != confirmPassword) {
+        alert("passwords do not match!");
+        return;
+    } else {
+      passwordMismatchError.style.display = "none";
+    }
+  });
+
     document.getElementById("registrationForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent form submission
-  
-      var accountNumber = document.getElementById("accountNumber").value;
-      var firstName = document.getElementById("firstName").value;
-      var lastName = document.getElementById("lastName").value;
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      var confirmPassword = document.getElementById("confirmPassword").value;
-      var initialDeposit = document.getElementById("initialDeposit").value;
-  
-      if (accountNumber === "" || firstName === "" || lastName === "" || email === "" || password === "" || confirmPassword === "" || initialDeposit === "") {
-        alert("Please fill in all the required fields.");
-        return; // Stop further execution
-      }
-  
       // Perform necessary actions for account creation
       alert("Account Created Successfully!");
-  
       // Uncomment the following line to redirect after successful account creation
        window.location.href = 'user.html';
     });
-  </script>
+ 
   
 
 </script>
