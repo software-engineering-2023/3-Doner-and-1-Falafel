@@ -261,10 +261,11 @@
                 <input type="text" class="form-control" id="desc" placeholder="Enter description">
               </div>
     
-              <button type="submit" onclick="submitForm(event, 'pay-bills-form')" class="btn-box">Submit</button>
+              <button type="submit" onclick="submitForm2(event, 'pay-bills-form')" class="btn-box">Submit</button>
             </form>
           </div>
         </div>
+
     
         <div class="carousel-slide transfer-money">
           <h2>Transfer Money</h2>
@@ -305,13 +306,13 @@
             </form>
           </div>
         </div>
+      </div>
         
         <div class="carousel-controls">
           <div class="arrow disabled prev-arrow">&lt;</div>
           <div class="arrow next-arrow">&gt;</div>
         </div>
-        </div>
-        
+    </div>
         <div class="next-slide-description"></div>
         
         <script>
@@ -342,6 +343,22 @@
         
           return isFormValid;
         }
+        function validateRequiredFields2(form) {
+          var requiredFields = form.querySelectorAll("input[required],select[required]");
+          var isFormValid = true;
+        
+          for (var i = 0; i < requiredFields.length; i++) {
+            if (requiredFields[i].value.trim() === "") {
+              requiredFields[i].classList.add("invalid-field");
+              isFormValid = false;
+            } else {
+              requiredFields[i].classList.remove("invalid-field");
+            }
+          }
+        
+          // Check if the canvas is empty
+          return isFormValid;
+        }
         
         function submitForm(event, formId) {
           event.preventDefault();
@@ -355,6 +372,29 @@
             return;
           }
           if (r[1].value.trim() < 0) {
+            alert("Cannot transfer negative amount");
+            return;
+          }
+        
+          // Form is valid, proceed with submission
+          // Simulate successful payment
+          alert('Payment was successful!');
+        
+          // Redirect to user.html
+          window.location.href = 'user.html';
+        }
+        function submitForm2(event, formId) {
+          event.preventDefault();
+        
+          var form = document.getElementById(formId);
+          var r = form.querySelectorAll("input[required]");
+        
+          if (!validateRequiredFields2(form)) {
+            // Display an error message or perform any other actions
+            alert("Please fill in all the required fields.");
+            return;
+          }
+          if (r[0].value.trim() < 0) {
             alert("Cannot transfer negative amount");
             return;
           }

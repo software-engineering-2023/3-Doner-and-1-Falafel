@@ -257,93 +257,96 @@
 </head>
 <body>
     <section class="top">
-      <div class="heading_container">
-        <h2 style="color:rgb(0, 0, 0)">
-          Personal Information
-        </h2>
+        <div class="heading_container">
+          <h2 style="color:rgb(0, 0, 0)">
+            Personal Information
+          </h2>
+        </div>
       </div>
-    </div>
-    <div class="card-body">
-      <label for="email" class="email-label">Email: <span id="email" class="email-value">johndoe@gmail.com</span></label>
-      <br>
-      <label for="username" class="username-label">Username: <span id="username" class="username-value">JohnDoe</span></label>
-      <button onclick="openChangeUsernameContainer()">Change Username</button>
-    
-      <div id="changeUsernameContainer" style="display: none;">
-        <label for="newUsername">New Username:</label>
-        <input type="text" id="newUsername">
-    
-        <button onclick="changeUsername()">Save</button>
-        <button onclick="closeChangeUsernameContainer()">Cancel</button>
+      <div class="card-body">
+        <label for="email" class="email-label">Email: <span id="email" class="email-value">johndoe@gmail.com</span></label>
+        <br>
+        <label for="username" class="username-label">Username: <span id="username" class="username-value">JohnDoe</span></label>
+        <button onclick="openChangeUsernameContainer()">Change Username</button>
+      
+        <div id="changeUsernameContainer" style="display: none;">
+          <label for="newUsername">New Username:</label>
+          <input type="text" id="newUsername" required>
+      
+          <button onclick="changeUsername()">Save</button>
+          <button onclick="closeChangeUsernameContainer()">Cancel</button>
+        </div>
+        <br>
+        <span class="password-container">Password: <span id="password" class="password-value"></span></span>
+        <button onclick="openChangePasswordContainer()" style="margin-left: 55px;">Change Password</button>
+        <br>
+      
+        <div id="changePasswordContainer" style="display: none;">
+          <label for="currentPassword">Current Password:</label>
+          <input type="password" id="currentPassword" required>
+      
+          <label for="newPassword">New Password:</label>
+          <input type="password" id="newPassword" required>
+      
+          <label for="confirmPassword">Confirm New Password:</label>
+          <input type="password" id="confirmPassword" required>
+      
+          <button onclick="changePassword()">Save</button>
+          <button onclick="closeChangePasswordContainer()">Cancel</button>
+        </div>
       </div>
-      <br>
-      <span class="password-container">Password: <span id="password" class="password-value"></span></span>
-      <button onclick="openChangePasswordContainer()" style="margin-left: 55px;">Change Password</button>
-      <br>
-    
-      <div id="changePasswordContainer" style="display: none;">
-        <label for="currentPassword">Current Password:</label>
-        <input type="password" id="currentPassword">
-    
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword">
-    
-        <label for="confirmPassword">Confirm New Password:</label>
-        <input type="password" id="confirmPassword">
-    
-        <button onclick="changePassword()">Save</button>
-        <button onclick="closeChangePasswordContainer()">Cancel</button>
-      </div>
-    </div>
-    
-    <style>
-      .password-container {
-        display: inline-block;
-      }
-    
-      .password-value {
-        position: relative;
-        padding-right: 20px; /* Adjust the padding as needed */
-      }
-    
-    </style>
-    
-  
-</div>
-
-<script>
-function openChangeUsernameContainer() {
-  document.getElementById("changeUsernameContainer").style.display = "block";
-}
-
-function closeChangeUsernameContainer() {
-  document.getElementById("changeUsernameContainer").style.display = "none";
-}
-
-function changeUsername() {
-  var newUsername = document.getElementById("newUsername").value;
-  document.getElementById("username").textContent = newUsername;
-  closeChangeUsernameContainer();
-}
-
-function openChangePasswordContainer() {
-  document.getElementById("changePasswordContainer").style.display = "block";
-}
-
-function closeChangePasswordContainer() {
-  document.getElementById("changePasswordContainer").style.display = "none";
-}
-
-function changePassword() {
-  var currentPassword = document.getElementById("currentPassword").value;
-  var newPassword = document.getElementById("newPassword").value;
-  var confirmPassword = document.getElementById("confirmPassword").value;
-
-  // Perform password validation and change logic here
-
-  closeChangePasswordContainer();
-}
-</script>
+      
+      <style>
+        .password-container {
+          display: inline-block;
+        }
+      
+        .password-value {
+          position: relative;
+          padding-right: 20px; /* Adjust the padding as needed */
+        }
+      </style>
+      
+      <script>
+        function openChangeUsernameContainer() {
+          document.getElementById("changeUsernameContainer").style.display = "block";
+        }
+      
+        function closeChangeUsernameContainer() {
+          document.getElementById("changeUsernameContainer").style.display = "none";
+        }
+      
+        function changeUsername() {
+          var newUsername = document.getElementById("newUsername").value;
+          document.getElementById("username").textContent = newUsername;
+          closeChangeUsernameContainer();
+        }
+      
+        function openChangePasswordContainer() {
+          document.getElementById("changePasswordContainer").style.display = "block";
+        }
+      
+        function closeChangePasswordContainer() {
+          document.getElementById("changePasswordContainer").style.display = "none";
+        }
+      
+        function changePassword() {
+          var currentPassword = document.getElementById("currentPassword").value;
+          var newPassword = document.getElementById("newPassword").value;
+          var confirmPassword = document.getElementById("confirmPassword").value;
+      
+          // Check if any required field is empty
+          if (!currentPassword || !newPassword || !confirmPassword) {
+            alert("Please fill in all required fields.");
+            return; // Stop further execution
+          }
+      
+          // Perform password validation and change logic here
+      
+          closeChangePasswordContainer();
+        }
+      </script>
+      
 <button onclick="window.location.href = 'reminder.html';" class="reminder" style="margin-left: 20px;">Reminders</button>
 <br>
 <div class="heading_container">

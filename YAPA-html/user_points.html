@@ -216,6 +216,7 @@
     function redeemPoints() {
       var pointsAmount = document.getElementById('points-amount').innerText;
       var redeemedPointsTableBody = document.getElementById('redeemed-points-body');
+      var moneyAmount = document.getElementById("money-amount");
 
       if (parseInt(pointsAmount) > 0) {
         // Add the redeemed points to the table
@@ -226,6 +227,7 @@
 
         // Reset the points to zero
         document.getElementById('points-amount').innerText = '0';
+        moneyAmount.textContent = "0";
 
         // Perform further actions for redeeming points
         alert('Congratulations! You have redeemed ' + pointsAmount + ' points.');
