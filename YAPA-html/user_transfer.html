@@ -235,71 +235,71 @@
         }
       </style>
     
-      <div class="carousel">
-        <div class="carousel-container">
-          <div class="carousel-slide pay-bills">
-            <h2>Pay Bills</h2>
-            <div class="col-md-5">
-              <form>
-                <div class="form-group">
-                  <label for="type">Bill Type<span class="required-indicator">*</span>:</label required>
-                  <select id="billType" name="billType" class="form-control" required>
-                    <option value="">Select Bill Type</option>
-                    <option value="internal">Credit Card</option>
-                    <option value="domestic">Gas</option>
-                    <option value="international">Electricity</option>
-                  </select>
-                </div>
+    <div class="carousel">
+      <div class="carousel-container">
+        <div class="carousel-slide pay-bills">
+          <h2>Pay Bills</h2>
+          <div class="col-md-5">
+            <form id="pay-bills-form" action="user.html">
+              <div class="form-group">
+                <label for="billType">Bill Type<span class="required-indicator">*</span>:</label>
+                <select id="billType" name="billType" class="form-control" required>
+                  <option value="">Select Bill Type</option>
+                  <option value="internal">Credit Card</option>
+                  <option value="domestic">Gas</option>
+                  <option value="international">Electricity</option>
+                </select>
+              </div>
     
-                <div class="form-group">
-                  <label for="amount">Amount<span class="required-indicator">*</span>:</label required>
-                  <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
-                </div>
+              <div class="form-group">
+                <label for="amount">Amount<span class="required-indicator">*</span>:</label>
+                <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+              </div>
     
-                <div class="form-group">
-                  <label for="desc">Description</label required>
-                  <input type="text" class="form-control" id="desc" placeholder="Enter description">
-                </div>
+              <div class="form-group">
+                <label for="desc">Description</label>
+                <input type="text" class="form-control" id="desc" placeholder="Enter description">
+              </div>
     
-                <button type="submit" onclick="submitForm(event)" class="btn-box">Submit</button>
-              </form>
-            </div>
-          </div>
-    
-          <div class="carousel-slide transfer-money">
-            <h2>Transfer Money</h2>
-            <div class="col-md-5">
-              <form>
-                <div class="form-group">
-                  <label for="type">Transaction Type<span class="required-indicator">*</span>:</label required>
-                  <select id="billType" name="billType" class="form-control" required>
-                    <option value="">Select Transaction Type</option>
-                    <option value="internal">Internal</option>
-                    <option value="domestic">Domestic</option>
-                    <option value="international">International</option>
-                  </select>
-                </div>
-    
-                <div class="form-group">
-                  <label for="toAccout">To Account<span class="required-indicator">*</span>:</label required>
-                  <input type="toAccount" class="form-control" id="toAccount" placeholder="Enter account to transfer to" required>
-                </div>
-    
-                <div class="form-group">
-                  <label for="amount">Amount<span class="required-indicator">*</span>:</label required>
-                  <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
-                </div>
-    
-                <div class="form-group">
-                  <label for="desc">Description</label required>
-                  <input type="text" class="form-control" id="desc" placeholder="Enter description">
-                </div>
-    
-                <button type="submit" onclick="submitForm(event)" class="btn-box">Submit</button>
-              </form>
-            </div>
+              <button type="submit" onclick="submitForm(event, 'pay-bills-form')" class="btn-box">Submit</button>
+            </form>
           </div>
         </div>
+    
+        <div class="carousel-slide transfer-money">
+          <h2>Transfer Money</h2>
+          <div class="col-md-5">
+            <form id="transfer-money-form" action="user.html">
+              <div class="form-group">
+                <label for="billType">Transaction Type<span class="required-indicator">*</span>:</label>
+                <select id="billType" name="billType" class="form-control" required>
+                  <option value="">Select Transaction Type</option>
+                  <option value="internal">Internal</option>
+                  <option value="domestic">Domestic</option>
+                  <option value="international">International</option>
+                </select>
+              </div>
+    
+              <div class="form-group">
+                <label for="toAccount">To Account<span class="required-indicator">*</span>:</label>
+                <input type="text" class="form-control" id="toAccount" placeholder="Enter account to transfer to" required>
+              </div>
+    
+              <div class="form-group">
+                <label for="amount">Amount<span class="required-indicator">*</span>:</label>
+                <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+              </div>
+    
+              <div class="form-group">
+                <label for="desc">Description</label>
+                <input type="text" class="form-control" id="desc" placeholder="Enter description">
+              </div>
+    
+              <button type="submit" onclick="submitForm(event, 'transfer-money-form')" class="btn-box">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
     
         <div class="carousel-controls">
           <div class="arrow disabled prev-arrow">&lt;</div>
@@ -310,6 +310,40 @@
       <div class="next-slide-description"></div>
     
       <script>
+   function validateRequiredFields(form) {
+    var requiredFields = form.querySelectorAll("input[required], select[required]");
+    var isFormValid = true;
+
+    for (var i = 0; i < requiredFields.length; i++) {
+      if (requiredFields[i].value.trim() === "") {
+        requiredFields[i].classList.add("invalid-field");
+        isFormValid = false;
+      } else {
+        requiredFields[i].classList.remove("invalid-field");
+      }
+    }
+
+    return isFormValid;
+  }
+
+  function submitForm(event, formId) {
+    event.preventDefault();
+
+    var form = document.getElementById(formId);
+
+    if (!validateRequiredFields(form)) {
+      // Display an error message or perform any other actions
+      alert("Please fill in all the required fields.");
+      return;
+    }
+
+    // Form is valid, proceed with submission
+    // Simulate successful payment
+    alert('Payment was successful!');
+
+    // Redirect to user.html
+    window.location.href = 'user.html';
+  }
         document.addEventListener('DOMContentLoaded', function () {
           var carousel = document.querySelector('.carousel');
           var carouselContainer = carousel.querySelector('.carousel-container');
@@ -353,15 +387,7 @@
     
           updateCarousel();
         });
-        function submitForm(event) {
-        event.preventDefault(); // Prevent form submission (for demonstration purposes)
-  
-        // Simulate successful payment
-        alert('Payment was successful!');
-  
-        // Redirect to user.html
-        window.location.href = 'user.html';
-      }
+       
       </script>
     </body>
       

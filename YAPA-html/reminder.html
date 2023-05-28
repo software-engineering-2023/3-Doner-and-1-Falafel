@@ -307,7 +307,7 @@
           return false;
         }
         else{
-          alert("Reminder has been set at " + document.getElementById("reminderTime").value);
+          alert("Reminder has been set at " + document.getElementById("reminderTime").value+" on "+ document.getElementById("reminderDate").value+"\n" +"It also has been added to the Reminders table");
         }
   
         var timeDifference = reminderDateTime.getTime() - currentTime.getTime();
