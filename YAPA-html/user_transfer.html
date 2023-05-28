@@ -33,7 +33,10 @@
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
   <!-- Custom styles for this template -->
@@ -62,7 +65,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
-                <li class="nav-item  ">
+                <li class="nav-item">
                   <a class="nav-link" href="user.html">Home</a>
                 </li>
                 <li class="nav-item">
@@ -71,10 +74,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="user_notifications.html"> Notifications </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="user_points.html">Points<img src="images/wallet.png" alt="" />
-                    </a>
-                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="user_points.html">Points<img src="images/wallet.png" alt="" />
+                  </a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="login.html"> Logout </a>
                 </li>
@@ -86,115 +89,281 @@
       </div>
     </header>
     <!-- end header section -->
-  <!-- </div> -->
+
+  </div>
 
     <!-- end header section -->
 
-    <section class=" slider_section position-relative">
-        <div id="carouselExampleIndicators" class="carousel slide">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="container">
-                <div class="box">
-                  <div class="row">
-                    <div class="col-md-7">
-                      <div class="detail-box">
-                        <div>
-                          <h2>
-                            Pay Bills
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-5">
-                      <form>
-                        <div class="form-group">
-                            <label for="type">Bill Type </label required>
-                              <select id="billType" name="billType" class="form-control"required>
-                                <option value="">Select Bill Type</option>
-                                <option value="internal">Credit Card</option>
-                                <option value="domestic">Gas</option>
-                                <option value="international">Electricity</option>
-                              </select><br><br>
-                          </div>
-                          <div class="form-group">
-                            <label for="ammount">Amount </label required>
-                              <input type="number" class="form-control" id="amount" placeholder="Enter account to transfer to" required>
-                          </div>
-                      <button type="submit" onclick="submitForm(event)" class="btn-box">Submit</button>
-                    </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <div class="carousel-item">
-              <div class="container">
-                <div class="box">
-                  <div class="row">
-                    <div class="col-md-7">
-                      <div class="detail-box">
-                        <div>
-                          <h2>
-                            Transfer Money
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-5">
-                      <form>
-                        <div class="form-group">
-                            <label for="type">Transaction Type </label required>
-                              <select id="billType" name="billType" class="form-control"required>
-                                <option value="">Select Transaction Type</option>
-                                <option value="internal">Internal</option>
-                                <option value="domestic">Domestic</option>
-                                <option value="international">International</option>
-                              </select><br><br>
-                          </div>
-                          <div class="form-group">
-                            <label for="toAccout">To Account </label required>
-                            <input type="toAccount" class="form-control" id="toAccount" placeholder="Enter account to transfer to" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="ammount">Amount </label required>
-                              <input type="number" class="form-control" id="amount" placeholder="Enter account to transfer to" required>
-                          </div>
-                      <button type="submit" onclick="submitForm(event)" class="btn-box">Submit</button>
-                    </form>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </div>
-      </section>
-      
-      <script>
-        function submitForm(event) {
-          event.preventDefault(); // Prevent the form from submitting and page refreshing
-      
-          // Get the form element that triggered the submit event
-          var form = event.target.form;
-      
-          // Check if the form is valid
-          if (form.checkValidity()) {
-            // Show the alert message
-            alert('Transfer was done correctly!');
-      
-            // Redirect to the user page
-            window.location.href = 'user.html';
-          } else {
-            // Form is not valid, display an error message or handle validation errors
-            alert('Please fill in all required fields.');
-          }
+    <body>
+      <style>
+        .carousel {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
         }
+    
+        .carousel-container {
+          display: flex;
+          transition: transform 0.3s ease-in-out;
+        }
+    
+        .carousel-slide.pay-bills {
+          flex: 0 0 90%;
+          margin-left: 150px;
+          margin-top: 3%;
+          background-color: #ffffff;
+          border: 3px solid #30ae69;
+          border-radius: 4px;
+          padding: 20px;
+          max-width: 1200px;
+        }
+    
+        .carousel-slide.transfer-money {
+          flex: 0 0 90%;
+          margin-left: 300px;
+          margin-top: 3%;
+          background-color: #ffffff;
+          border: 3px solid #30ae69;
+          border-radius: 4px;
+          padding: 20px;
+          max-width: 1200px;
+        }
+    
+        .carousel-controls {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+        }
+    
+        .arrow {
+          cursor: pointer;
+          font-size: 80px;
+          color: #333;
+          padding: 20px;
+          background-color: #fff;
+          border: none;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          opacity: 0.8;
+          transition: opacity 0.1s ease-in-out;
+        }
+    
+        .arrow:hover {
+          opacity: 3;
+        }
+        .disabled {
+      opacity: 0.1;
+      pointer-events: none;
+    }
+  
+    .disabled .arrow {
+      font-size: 24px;
+    }
+  
+    .disabled .prev-arrow {
+      transform: scale(0.8);
+    }
+  
+    .disabled .next-arrow {
+      transform: scale(0.8);
+    }
+    
+        .prev-arrow {
+          left: 10px;
+        }
+    
+        .next-arrow {
+          right: 10px;
+        }
+    
+        .btn-box {
+      background-color: #30ae69;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+      width: 250px;
+      height: 50px;
+    }
+  
+    .btn-box:hover {
+      background-color: #2a965c;
+    }
+    
+        /* Adjust form line spacing */
+        .carousel-slide.pay-bills form .form-group,
+        .carousel-slide.transfer-money form .form-group {
+          margin-bottom: 15px;
+        }
+    
+        .carousel-slide.pay-bills form label,
+        .carousel-slide.transfer-money form label {
+          font-weight: bold;
+        }
+    
+        .carousel-slide.pay-bills form input,
+        .carousel-slide.transfer-money form input,
+        .carousel-slide.pay-bills form select,
+        .carousel-slide.transfer-money form select,
+        .carousel-slide.pay-bills form textarea,
+        .carousel-slide.transfer-money form textarea {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+    
+        .carousel-slide.pay-bills form button,
+        .carousel-slide.transfer-money form button {
+    
+          background-color: #30ae69;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 250px;
+      height: 50px;
+        }
+  
+        .carousel-slide.pay-bills form button:hover,
+        .carousel-slide.transfer-money form button:hover {
+          background-color: #2a965c;
+        }
+      </style>
+    
+      <div class="carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide pay-bills">
+            <h2>Pay Bills</h2>
+            <div class="col-md-5">
+              <form>
+                <div class="form-group">
+                  <label for="type">Bill Type<span class="required-indicator">*</span>:</label required>
+                  <select id="billType" name="billType" class="form-control" required>
+                    <option value="">Select Bill Type</option>
+                    <option value="internal">Credit Card</option>
+                    <option value="domestic">Gas</option>
+                    <option value="international">Electricity</option>
+                  </select>
+                </div>
+    
+                <div class="form-group">
+                  <label for="amount">Amount<span class="required-indicator">*</span>:</label required>
+                  <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+                </div>
+    
+                <div class="form-group">
+                  <label for="desc">Description</label required>
+                  <input type="text" class="form-control" id="desc" placeholder="Enter description">
+                </div>
+    
+                <button type="submit" onclick="submitForm(event)" class="btn-box">Submit</button>
+              </form>
+            </div>
+          </div>
+    
+          <div class="carousel-slide transfer-money">
+            <h2>Transfer Money</h2>
+            <div class="col-md-5">
+              <form>
+                <div class="form-group">
+                  <label for="type">Transaction Type<span class="required-indicator">*</span>:</label required>
+                  <select id="billType" name="billType" class="form-control" required>
+                    <option value="">Select Transaction Type</option>
+                    <option value="internal">Internal</option>
+                    <option value="domestic">Domestic</option>
+                    <option value="international">International</option>
+                  </select>
+                </div>
+    
+                <div class="form-group">
+                  <label for="toAccout">To Account<span class="required-indicator">*</span>:</label required>
+                  <input type="toAccount" class="form-control" id="toAccount" placeholder="Enter account to transfer to" required>
+                </div>
+    
+                <div class="form-group">
+                  <label for="amount">Amount<span class="required-indicator">*</span>:</label required>
+                  <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+                </div>
+    
+                <div class="form-group">
+                  <label for="desc">Description</label required>
+                  <input type="text" class="form-control" id="desc" placeholder="Enter description">
+                </div>
+    
+                <button type="submit" onclick="submitForm(event)" class="btn-box">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    
+        <div class="carousel-controls">
+          <div class="arrow disabled prev-arrow">&lt;</div>
+          <div class="arrow next-arrow">&gt;</div>
+        </div>
+      </div>
+    
+      <div class="next-slide-description"></div>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          var carousel = document.querySelector('.carousel');
+          var carouselContainer = carousel.querySelector('.carousel-container');
+          var slides = carouselContainer.querySelectorAll('.carousel-slide');
+          var prevArrow = carousel.querySelector('.carousel-controls .prev-arrow');
+          var nextArrow = carousel.querySelector('.carousel-controls .next-arrow');
+          var currentIndex = 0;
+    
+          function updateCarousel() {
+            carouselContainer.style.transform = 'translateX(-' + currentIndex * 100 + '%)';
+            prevArrow.classList.toggle('disabled', currentIndex === 0);
+            nextArrow.classList.toggle('disabled', currentIndex === slides.length - 1);
+    
+  
+    
+            // Show/hide pay bills form
+            var payBillsForm = document.querySelector('.pay-bills-form');
+            if (currentIndex === 0) {
+              payBillsForm.classList.add('visible');
+            } else {
+              payBillsForm.classList.remove('visible');
+            }
+          }
+    
+          function movePrev() {
+            if (currentIndex > 0) {
+              currentIndex--;
+              updateCarousel();
+            }
+          }
+    
+          function moveNext() {
+            if (currentIndex < slides.length - 1) {
+              currentIndex++;
+              updateCarousel();
+            }
+          }
+    
+          prevArrow.addEventListener('click', movePrev);
+          nextArrow.addEventListener('click', moveNext);
+    
+          updateCarousel();
+        });
+        function submitForm(event) {
+        event.preventDefault(); // Prevent form submission (for demonstration purposes)
+  
+        // Simulate successful payment
+        alert('Payment was successful!');
+  
+        // Redirect to user.html
+        window.location.href = 'user.html';
+      }
       </script>
+    </body>
       
       
     
