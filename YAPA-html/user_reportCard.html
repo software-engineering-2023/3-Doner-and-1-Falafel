@@ -239,7 +239,7 @@
       var inputField = document.getElementById("name");
       var creditCardNumber = inputField.value;
   
-      if (creditCardNumber.length < 14 || creditCardNumber < 0) {
+      if (creditCardNumber.length != 16 || creditCardNumber < 0) {
         alert("Invalid credit card number");
         
       } else {
