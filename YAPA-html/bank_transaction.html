@@ -56,7 +56,7 @@
                   <a class="nav-link" href="user_account.html">My Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> Notifications </a>
+                    <a class="nav-link" href="user_notifications.html"> Notifications </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="user_points.html">Points<img src="images/wallet.png" alt="" />
@@ -76,194 +76,121 @@
     <!-- end header section -->
 
   </div>
-
-<style>
-   body {
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-      color: black;
+  <title>Transactions</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
       background-color: white;
     }
-
-    h3 {
-      margin-bottom: 15px;
-      font-family: "Roboto Condensed", Arial, sans-serif;
-    font-size: 32px;
-    font-weight: bold;
-    }
-
-    form {
-      margin-bottom: 15px;
-      padding: 6px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="number"] {
-      width: 300px;
+    
+    th, td {
+      border: 1px solid black;
       padding: 8px;
-      margin-bottom: 12px;
+      text-align: left;
     }
-
-    input[type="submit"] {
-      padding: 10px 20px;
-      background-color: #30ae69;
-      color: white;
-      border: none;
-      cursor: pointer;
+    
+    body{
+        background-color: #ffffff;
     }
-
-    input[type="submit"]:hover {
-      background-color: #30ae69;
-    }
-
-    .required-indicator {
-      color: red;
-      font-weight: bold;
-    }
-</style>
-<!-- <div class="heading_container">
-  <h2 style="color:rgb(0, 0, 0)">
-    Credit Card Application
-  </h2>
-</div>
-</div>
-<div class="container">
-  <div class="box">
-    <div class="row">
-      <div class="detail-box">
-        <form action="user_cards.html" method="post">
-          <label for="gender">Gender:</label>
-          <select id="gender" name="gender" required>
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select><br><br>
-
-          <label for="name">Card Holder Name:</label>
-          <input type="text" id="name" name="name" required><br><br>
-
-          <label for="creditCardType">Credit Card Type:</label>
-          <select id="creditCardType" name="creditCardType" required>
-            <option value="">Select Card Type</option>
-            <option value="visa">Visa</option>
-            <option value="mastercard">Mastercard</option>
-            <option value="amex">American Express</option>
-          </select><br><br>
-
-          <label for="accountNumber">Account Number:</label>
-          <input type="text" id="accountNumber" name="accountNumber" required><br><br>
-
-          <label for="occupation">Occupation:</label>
-          <input type="text" id="occupation" name="occupation" required><br><br>
-
-          <label for="phone">Phone Number:</label>
-          <input type="number" id="phone" name="phone" required><br><br>
-
-          <input type="submit" value="Submit" onclick="submitRequest()">
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  function submitRequest() {
-  var gender = document.getElementById("gender").value;
-  var name = document.getElementById("name").value;
-  var creditCardType = document.getElementById("creditCardType").value;
-  var accountNumber = document.getElementById("accountNumber").value;
-  var occupation = document.getElementById("occupation").value;
-  var phone = document.getElementById("phone").value;
-
-  if (gender === "" || name === "" || creditCardType === "" || accountNumber === "" || occupation === "" || phone === "") {
-    alert("Please fill in all the required fields.");
-    return false; // Prevent form submission
-  }
-
-  // Perform necessary actions for accepting the credit card request
-  alert("Credit Card Requested Successfully!");
-  // window.location.href = 'user_cards.html';
+    .cool-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
 }
 
-</script> -->
+.cool-table th,
+.cool-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
 
+.cool-table th {
+  background-color: #30ae69;
+  color: #fff;
+  font-weight: bold;
+}
 
+.cool-table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.cool-table tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.cool-table td:last-child {
+  text-transform: capitalize;
+}
+
+.cool-table .report-status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.cool-table .report-status-handled {
+  background-color: #30ae69;
+  color: #fff;
+}
+
+.cool-table .report-status-unhandled {
+  background-color: #f76262;
+  color: #fff;
+}
+.h2{
+  margin-bottom: 10px;
+}
+    
+  </style>
+</head>
 <body>
   <div class="heading_container">
-    <h2>
-      Credit Card Application
+    <h2 class="h2" style="color:rgb(0, 0, 0)">
+     Account Transactions History
     </h2>
   </div>
-  <form id="registrationForm" action="user_loans.html" style="width: 400px; padding-left: 100px;">
-    <label for="gender">Gender<span class="required-indicator">*</span>:</label>
-    <select id="gender" name="gender" class="form-control"required>
-      <option value="">Select Gender</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select><br><br>
-  
-    <label for="fullname">Full Name<span class="required-indicator">*</span>:</label>
-    <input type="text" id="fullname" name="fullname" class="form-control" required>
-  
-    <label for="creditCardType">Credit Card Type<span class="required-indicator">*</span>:</label>
-    <select id="creditCardType" name="creditCardType" class="form-control"required>
-      <option value="">Select Card Type</option>
-      <option value="visa">Visa</option>
-      <option value="mastercard">Mastercard</option>
-      <option value="amex">American Express</option>
-    </select><br><br>
-  
-    <label for="amount">Account Number<span class="required-indicator">*</span>:</label>
-    <input type="number" id="amount" name="amount" class="form-control"required>
-  
-    <label for="period">Occupation<span class="required-indicator">*</span>:</label>
-    <input type="text" id="period" name="period" class="form-control"required>
+</div>
+  <table class="cool-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Transaction</th>
+        <th>Amount</th>
+        <th>Recipient</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01-04-2023 7:00 pm</td>
+        <td>Deposit</td>
+        <td>$100.00</td>
+        <td>Payment to Account XXX</td>
+      </tr>
+      <tr>
+        <td>22-02-2023 8:00 am</td>
+        <td>Withdrawal</td>
+        <td>$50.00</td>
+        <td>Payment to Account YYY</td>
+      </tr>
+      <tr>
+        <td>19-01-2023 5:57 am</td>
+        <td>Payment</td>
+        <td>$30.00</td>
+        <td>Payment to Account ZZZ</td>
+      </tr>
+    </tbody>
+  </table>
+  <button onclick="window.location.href='user_account.html'" style="margin: 5px;">Back</button>
+ 
+ <!-- end how section -->
 
-    <label for="period">Phone Number<span class="required-indicator">*</span>:</label>
-    <input type="text" id="phone" name="period" class="form-control"required>
-  
-    <br>
-    <input type="submit" value="Create Account">
-  </form>
-  <button onclick="window.location.href='user_cards.html'" style="margin: 5px;">Back</button>
-  
-  <script>
-    document.getElementById("registrationForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent form submission
-  
-      var accountNumber = document.getElementById("gender").value;
-      var firstName = document.getElementById("fullname").value;
-      var lastName = document.getElementById("loantype").value;
-      var email = document.getElementById("amount").value;
-      var password = document.getElementById("period").value;
-      var phone = document.getElementById("phone").value;
-      if (accountNumber === "" || firstName === "" || lastName === "" || email === "" || password === "" || phone==="") {
-        alert("Please fill in all the required fields.");
-        return; // Stop further execution
-      }
-  
-      // Perform necessary actions for account creation
-      alert("Loan Applied Successfully!");
-  
-      // Uncomment the following line to redirect after successful account creation
-       window.location.href = 'user_cards.html';
-    });
-  </script>
-  
-
-</script>
-</body>
-
-
-  <section class="info_section layout_padding">
+ <section class="info_section layout_padding">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -334,6 +261,7 @@
   </section>
 
   <!-- end info_section -->
+
   <!-- footer section -->
       
   <div id="slideOutButton" class="slide-out-button" onclick="openReportPopup()">
@@ -348,6 +276,7 @@
     <br>
     <button class="transparent-button" id="submitButton" onclick="closeReportPopup()">Submit</button>
 </div>
+
 <script>
     var popupBoxReport = document.getElementById("popupBoxReport");
 

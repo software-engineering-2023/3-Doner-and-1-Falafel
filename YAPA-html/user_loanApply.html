@@ -243,7 +243,7 @@
     <br>
     <input type="submit" value="Create Account">
   </form>
-  
+  <button onclick="window.location.href='user_loans.html'" style="margin: 5px;">Back</button>
   <script>
     document.getElementById("registrationForm").addEventListener("submit", function(event) {
       event.preventDefault(); // Prevent form submission
@@ -331,7 +331,7 @@
               Newsletter
             </h5>
             <form action="">
-              <input type="email" placeholder="Enter your email" />
+              <input type="email" placeholder="Enter your email" required/>
               <button>
                 Subscribe
               </button>

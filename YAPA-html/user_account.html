@@ -358,7 +358,6 @@ function changePassword() {
 <table class="cool-table">
   <thead>
     <tr>
-      <th>Account Number</th>
       <th>Account Type</th>
       <th>Balance</th>
       <th>Transactions</th>
@@ -367,11 +366,10 @@ function changePassword() {
   </thead>
   <tbody>
     <tr>
-      <td>123456789</td>
       <td>Savings</td>
       <td>$5,000.00</td>
       <td>
-        <a href="user_transactions.html">
+        <a href="bank_transaction.html">
           <button>View Transactions</button>
         </a>
       </td>
@@ -380,11 +378,10 @@ function changePassword() {
       </td>
     </tr>
     <tr>
-      <td>987654321</td>
       <td>Checking</td>
       <td>$2,500.00</td>
       <td>
-        <a href="user_transactions.html">
+        <a href="bank_transaction.html">
           <button>View Transactions</button>
         </a>
       </td>
@@ -396,7 +393,7 @@ function changePassword() {
 </table>
 
       <br>
-      <button onclick="window.location.href = 'create_Account.html';" class="reminder" style="margin-left: 20px;">Add new Bank Account</button>
+      <button onclick="window.location.href = 'create_Account.html';" class="reminder" style="margin-left: 20px;">Add new Account</button>
       <br>
 
       
@@ -478,7 +475,7 @@ function changePassword() {
               Newsletter
             </h5>
             <form action="">
-              <input type="email" placeholder="Enter your email" />
+                <input type="email" placeholder="Enter your email" required/>
               <button>
                 Subscribe
               </button>

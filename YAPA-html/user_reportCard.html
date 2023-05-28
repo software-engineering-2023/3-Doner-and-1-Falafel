@@ -228,7 +228,7 @@
         </div>
       </form>
     </div>
-    
+    <button onclick="window.location.href='user_cards.html'" style="margin: 5px;">Back</button>
     <script>
       function submitForm(event) {
         event.preventDefault(); // Prevent the form from submitting and page refreshing
@@ -248,7 +248,7 @@
           redirectButton2.classList.remove('hidden');
         } else {
           // Form is not valid, display an error message or handle validation errors
-          alert('Please fill in all required fields.');
+          alert('Please put a card number.');
         }
       }
     </script>
@@ -342,7 +342,7 @@
               Newsletter
             </h5>
             <form action="">
-              <input type="email" placeholder="Enter your email" />
+              <input type="email" placeholder="Enter your email" required/>
               <button>
                 Subscribe
               </button>

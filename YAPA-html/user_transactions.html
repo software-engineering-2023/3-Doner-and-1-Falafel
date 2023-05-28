@@ -159,33 +159,38 @@
   <table class="cool-table">
     <thead>
       <tr>
+        <th>Account Type</th>
         <th>Date</th>
         <th>Transaction</th>
         <th>Amount</th>
-        <th>Payment Account</th>
+        <th>Recipient</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td>Savings</td>
         <td>01-04-2023 7:00 pm</td>
         <td>Deposit</td>
         <td>$100.00</td>
         <td>Payment to Account XXX</td>
       </tr>
       <tr>
+        <td>Checking</td>
         <td>22-02-2023 8:00 am</td>
         <td>Withdrawal</td>
         <td>$50.00</td>
-        <td>Gas Payment</td>
+        <td>Payment to Account YYY</td>
       </tr>
       <tr>
+        <td>Savings</td>
         <td>19-01-2023 5:57 am</td>
         <td>Payment</td>
         <td>$30.00</td>
-        <td>Credit Card Bill</td>
+        <td>Payment to Account ZZZ</td>
       </tr>
     </tbody>
   </table>
+
  
  <!-- end how section -->
 
@@ -248,7 +253,7 @@
               Newsletter
             </h5>
             <form action="">
-              <input type="email" placeholder="Enter your email" />
+              <input type="email" placeholder="Enter your email" required/>
               <button>
                 Subscribe
               </button>
@@ -275,6 +280,7 @@
     <br>
     <button class="transparent-button" id="submitButton" onclick="closeReportPopup()">Submit</button>
 </div>
+
 <script>
     var popupBoxReport = document.getElementById("popupBoxReport");
 
